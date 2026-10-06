@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import useSWR from "swr";
-import { Flame, Award, ChevronRight, Sparkles, Check, Clock, ShieldCheck, Zap } from "lucide-react";
+import { Flame, Sprout, Award, ChevronRight, Check, Clock, Zap } from "lucide-react";
 import clsx from "clsx";
 import api from "../lib/api";
+import { BadgeIcon } from "./BadgeIcon";
 
 const fetcher = (url: string) => api.get(url).then((res) => res.data);
 
@@ -40,14 +41,18 @@ export function StreakRewardCard() {
     <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] p-6 rounded-3xl shadow-xs border border-[#C8D7C5] dark:border-[#28362D] space-y-5 transition-colors backdrop-blur-xs">
       {/* Top Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3.5">
           <div className={clsx(
-            "w-12 h-12 rounded-2xl flex items-center justify-center text-xl shadow-xs border transition-transform",
+            "w-12 h-12 rounded-2xl flex items-center justify-center shadow-xs border transition-transform shrink-0",
             current_streak > 0 
-              ? "bg-gradient-to-tr from-amber-500/20 to-orange-500/20 text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800/60"
-              : "bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#5F7E5C] dark:text-[#86A882] border-[#C8D7C5] dark:border-[#2D4434]"
+              ? "bg-[#D6E3D3] dark:bg-[#1D2D23] border-[#B4D4B0] dark:border-[#2D4434]"
+              : "bg-[#D6E3D3] dark:bg-[#1D2D23] border-[#C8D7C5] dark:border-[#2D4434]"
           )}>
-            {current_streak > 0 ? "🔥" : "🌱"}
+            {current_streak > 0 ? (
+              <Flame className="w-6 h-6 text-amber-700 dark:text-amber-400 fill-amber-700/20 stroke-[2.2]" />
+            ) : (
+              <Sprout className="w-6 h-6 text-[#5F7E5C] dark:text-[#86A882] stroke-[2.2]" />
+            )}
           </div>
           <div>
             <div className="flex items-center space-x-2">
@@ -55,26 +60,26 @@ export function StreakRewardCard() {
                 {current_streak} {current_streak === 1 ? "Day" : "Days"} Streak
               </h3>
               {streak_active_today && (
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#D6E3D3] text-[#263825] dark:bg-[#1D2D23] dark:text-[#B4D4B0] border border-[#B4D4B0] dark:border-[#2D4434]">
                   Active Today
                 </span>
               )}
             </div>
-            <p className="text-xs text-[#596557] dark:text-[#A6A099]">
+            <p className="text-xs text-[#596557] dark:text-[#A6A099] mt-0.5">
               {streak_active_today
-                ? "You reflected today! Tomorrow keeps the flame alive."
+                ? "Reflection completed today. Tomorrow keeps the momentum alive."
                 : grace_period_active
-                ? "🛡️ Grace period active! Write today to preserve your streak."
+                ? "Grace day active: write today to preserve your continuous streak."
                 : total_entries === 0
                 ? "Write your first entry to start your mindful streak."
-                : "Pause and write today to rekindle your streak."}
+                : "Pause and write today to rekindle your reflection habit."}
             </p>
           </div>
         </div>
 
         <Link
           href="/rewards"
-          className="inline-flex items-center space-x-1 text-xs font-semibold text-[#5F7E5C] dark:text-[#86A882] hover:underline"
+          className="inline-flex items-center space-x-1 text-xs font-semibold text-[#5F7E5C] dark:text-[#86A882] hover:underline shrink-0"
         >
           <span>Rewards & Badges</span>
           <ChevronRight className="w-3.5 h-3.5" />
@@ -85,22 +90,22 @@ export function StreakRewardCard() {
       <div className="p-3.5 rounded-2xl bg-[#D6E3D3]/60 dark:bg-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] space-y-2">
         <div className="flex items-center justify-between text-xs">
           <div className="flex items-center space-x-1.5 font-bold text-[#24201D] dark:text-[#F5EFE6]">
-            <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+            <Zap className="w-3.5 h-3.5 text-[#5F7E5C] dark:text-[#86A882] fill-current" />
             <span>Mindful Level {level}</span>
           </div>
-          <span className="text-[#596557] dark:text-[#A6A099] font-medium">
+          <span className="text-[#596557] dark:text-[#A6A099] font-medium text-[11px]">
             {xp} / {next_level_xp} XP
           </span>
         </div>
         <div className="w-full h-2 bg-[#C8D7C5]/50 dark:bg-[#1D2D23] rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#5F7E5C] to-emerald-500 dark:from-[#86A882] dark:to-emerald-400 rounded-full transition-all duration-700"
+            className="h-full bg-gradient-to-r from-[#5F7E5C] to-[#4D674A] dark:from-[#86A882] dark:to-[#A4C4A0] rounded-full transition-all duration-700"
             style={{ width: `${xpPercent}%` }}
           />
         </div>
       </div>
 
-      {/* 7-Day Habit Tracker Dots */}
+      {/* 7-Day Habit Tracker */}
       <div className="space-y-2">
         <div className="flex justify-between items-center text-xs text-[#596557] dark:text-[#A6A099]">
           <span className="font-semibold uppercase tracking-wider text-[10px]">Past 7 Days Rhythm</span>
@@ -137,8 +142,10 @@ export function StreakRewardCard() {
       {/* Next Milestone & Badges Preview */}
       {nextBadge && (
         <div className="pt-2 flex items-center justify-between border-t border-[#C8D7C5]/60 dark:border-[#28362D] text-xs">
-          <div className="flex items-center space-x-2 truncate">
-            <span className="text-base">{nextBadge.icon}</span>
+          <div className="flex items-center space-x-2.5 truncate">
+            <div className="p-1.5 rounded-xl bg-[#D6E3D3] dark:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] shrink-0">
+              <BadgeIcon badgeId={nextBadge.id} iconName={nextBadge.icon} className="w-4 h-4" isUnlocked={false} />
+            </div>
             <div className="truncate">
               <span className="font-semibold text-[#24201D] dark:text-[#F5EFE6] block truncate">
                 Next: {nextBadge.title}

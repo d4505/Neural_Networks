@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import useSWR from "swr";
-import { Award, Flame, Zap, ShieldCheck, Sparkles, Wind, CheckCircle2, Lock, ArrowRight, Heart } from "lucide-react";
+import { Award, Flame, Zap, ShieldCheck, Wind, CheckCircle2, Lock, BookOpen } from "lucide-react";
 import clsx from "clsx";
 import api from "../../../lib/api";
 import { BreathingModal } from "../../../components/BreathingModal";
+import { BadgeIcon } from "../../../components/BadgeIcon";
 
 const fetcher = (url: string) => api.get(url).then((res) => res.data);
 
@@ -72,15 +73,15 @@ export default function RewardsPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
               Current Streak
             </span>
-            <div className="w-9 h-9 rounded-xl bg-orange-100 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg">
-              🔥
+            <div className="w-10 h-10 rounded-2xl bg-[#D6E3D3] dark:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] flex items-center justify-center">
+              <Flame className="w-5 h-5 text-amber-700 dark:text-amber-400 fill-amber-700/20 stroke-[2.2]" />
             </div>
           </div>
           <p className="text-3xl font-bold font-serif text-[#24201D] dark:text-[#F5EFE6]">
             {current_streak} {current_streak === 1 ? "Day" : "Days"}
           </p>
           <p className="text-xs text-[#596557] dark:text-[#A6A099]">
-            {grace_period_active ? "🛡️ Grace day active" : `Best streak: ${longest_streak} days`}
+            {grace_period_active ? "Grace day active" : `Best streak: ${longest_streak} days`}
           </p>
         </div>
 
@@ -90,8 +91,8 @@ export default function RewardsPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
               Mindful Level
             </span>
-            <div className="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center">
-              <Zap className="w-5 h-5 fill-current" />
+            <div className="w-10 h-10 rounded-2xl bg-[#D6E3D3] dark:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] flex items-center justify-center">
+              <Zap className="w-5 h-5 text-[#5F7E5C] dark:text-[#86A882] fill-current" />
             </div>
           </div>
           <p className="text-3xl font-bold font-serif text-[#24201D] dark:text-[#F5EFE6]">
@@ -100,7 +101,7 @@ export default function RewardsPage() {
           <div className="space-y-1">
             <div className="w-full h-1.5 bg-[#C8D7C5] dark:bg-[#28362D] rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-amber-500 to-[#5F7E5C] rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-[#5F7E5C] to-[#4D674A] dark:from-[#86A882] dark:to-[#A4C4A0] rounded-full transition-all duration-500"
                 style={{ width: `${levelProgress}%` }}
               />
             </div>
@@ -117,8 +118,8 @@ export default function RewardsPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
               Milestones Earned
             </span>
-            <div className="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-              <Award className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-2xl bg-[#D6E3D3] dark:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] flex items-center justify-center">
+              <Award className="w-5 h-5 text-[#5F7E5C] dark:text-[#86A882]" />
             </div>
           </div>
           <p className="text-3xl font-bold font-serif text-[#24201D] dark:text-[#F5EFE6]">
@@ -135,8 +136,8 @@ export default function RewardsPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
               Total Reflections
             </span>
-            <div className="w-9 h-9 rounded-xl bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#5F7E5C] dark:text-[#86A882] flex items-center justify-center text-lg">
-              🌱
+            <div className="w-10 h-10 rounded-2xl bg-[#D6E3D3] dark:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-[#5F7E5C] dark:text-[#86A882]" />
             </div>
           </div>
           <p className="text-3xl font-bold font-serif text-[#24201D] dark:text-[#F5EFE6]">
@@ -151,7 +152,7 @@ export default function RewardsPage() {
       {/* Philosophy & Grace Day Card */}
       <div className="p-6 rounded-3xl bg-[#D6E3D3]/70 dark:bg-[#1D2D23]/60 border border-[#C8D7C5] dark:border-[#2D4434] shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="flex items-start space-x-4">
-          <div className="p-3 rounded-2xl bg-[#E4ECE2] dark:bg-[#141C17] text-[#5F7E5C] dark:text-[#86A882] shrink-0">
+          <div className="p-3 rounded-2xl bg-[#E4ECE2] dark:bg-[#141C17] text-[#5F7E5C] dark:text-[#86A882] shrink-0 border border-[#C8D7C5]/60 dark:border-[#28362D]">
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div className="space-y-1">
@@ -218,20 +219,20 @@ export default function RewardsPage() {
                   "p-6 rounded-3xl border transition-all duration-200 flex flex-col justify-between space-y-4",
                   isUnlocked
                     ? "bg-[#E4ECE2]/90 dark:bg-[#19221C] border-[#B4D4B0] dark:border-[#2D4434] shadow-xs"
-                    : "bg-[#EAEFE8]/40 dark:bg-[#141C17]/50 border-[#C8D7C5]/50 dark:border-[#28362D]/50 opacity-75"
+                    : "bg-[#EAEFE8]/40 dark:bg-[#141C17]/50 border-[#C8D7C5]/50 dark:border-[#28362D]/50 opacity-80"
                 )}
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-3.5">
                     <div
                       className={clsx(
-                        "w-14 h-14 rounded-2xl flex items-center justify-center text-2xl border shadow-xs transition-transform",
+                        "w-12 h-12 rounded-2xl flex items-center justify-center border shadow-2xs transition-transform shrink-0",
                         isUnlocked
-                          ? "bg-gradient-to-tr from-[#D6E3D3] to-white dark:from-[#1D2D23] dark:to-[#141C17] border-[#C8D7C5] dark:border-[#2D4434] scale-105"
-                          : "bg-neutral-200/50 dark:bg-neutral-900/50 border-neutral-300 dark:border-neutral-800 grayscale"
+                          ? "bg-[#D6E3D3] dark:bg-[#1D2D23] border-[#B4D4B0] dark:border-[#2D4434]"
+                          : "bg-[#EAEFE8]/50 dark:bg-[#141C17]/60 border-[#C8D7C5]/60 dark:border-[#28362D]"
                       )}
                     >
-                      {badge.icon}
+                      <BadgeIcon badgeId={badge.id} iconName={badge.icon} className="w-5 h-5" isUnlocked={isUnlocked} />
                     </div>
                     <div>
                       <h4 className="font-serif font-bold text-base text-[#24201D] dark:text-[#F5EFE6]">
@@ -244,12 +245,12 @@ export default function RewardsPage() {
                   </div>
 
                   {isUnlocked ? (
-                    <div className="p-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">
-                      <CheckCircle2 className="w-4 h-4" />
+                    <div className="p-1 rounded-full bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#5F7E5C] dark:text-[#86A882] border border-[#B4D4B0] dark:border-[#2D4434]">
+                      <CheckCircle2 className="w-4 h-4 stroke-[2.5]" />
                     </div>
                   ) : (
-                    <div className="p-1 rounded-full bg-neutral-200 dark:bg-neutral-800 text-neutral-500">
-                      <Lock className="w-4 h-4" />
+                    <div className="p-1 rounded-full bg-[#EAEFE8] dark:bg-[#141C17] text-[#596557]/60 dark:text-[#A6A099]/60 border border-[#C8D7C5]/60 dark:border-[#28362D]">
+                      <Lock className="w-3.5 h-3.5" />
                     </div>
                   )}
                 </div>
@@ -261,7 +262,7 @@ export default function RewardsPage() {
                 {/* Progress Bar & Status */}
                 <div className="pt-2 border-t border-[#C8D7C5]/50 dark:border-[#28362D]/50 space-y-1.5">
                   <div className="flex justify-between text-[11px] font-medium">
-                    <span className={isUnlocked ? "text-emerald-700 dark:text-emerald-400 font-bold" : "text-[#596557] dark:text-[#A6A099]"}>
+                    <span className={isUnlocked ? "text-[#5F7E5C] dark:text-[#86A882] font-bold" : "text-[#596557] dark:text-[#A6A099]"}>
                       {isUnlocked ? "Unlocked (+100 XP)" : "In Progress"}
                     </span>
                     <span className="text-[#596557] dark:text-[#A6A099]">
@@ -272,7 +273,7 @@ export default function RewardsPage() {
                     <div
                       className={clsx(
                         "h-full rounded-full transition-all duration-500",
-                        isUnlocked ? "bg-emerald-600 dark:bg-emerald-400" : "bg-[#5F7E5C] dark:bg-[#86A882]"
+                        isUnlocked ? "bg-[#5F7E5C] dark:bg-[#86A882]" : "bg-[#5F7E5C]/60 dark:bg-[#86A882]/60"
                       )}
                       style={{ width: `${progressPercent}%` }}
                     />

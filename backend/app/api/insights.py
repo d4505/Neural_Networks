@@ -277,16 +277,16 @@ def get_streak_and_rewards(db: Session = Depends(get_db), current_user: User = D
             })
             
         all_badges = [
-            {"id": "first_entry", "title": "First Spark", "description": "Write your first reflection", "icon": "🌱", "unlocked": False, "progress": 0, "max_progress": 1, "category": "milestone"},
-            {"id": "streak_3", "title": "3-Day Flow", "description": "Maintain a 3-day journaling streak", "icon": "🔥", "unlocked": False, "progress": 0, "max_progress": 3, "category": "streak"},
-            {"id": "streak_7", "title": "7-Day Clarity", "description": "Maintain a 7-day mindful habit", "icon": "✨", "unlocked": False, "progress": 0, "max_progress": 7, "category": "streak"},
-            {"id": "streak_14", "title": "14-Day Fortitude", "description": "Maintain a 14-day streak", "icon": "🌿", "unlocked": False, "progress": 0, "max_progress": 14, "category": "streak"},
-            {"id": "streak_30", "title": "30-Day Zen Master", "description": "Complete a full month of awareness", "icon": "👑", "unlocked": False, "progress": 0, "max_progress": 30, "category": "streak"},
-            {"id": "polyglot", "title": "Polyglot Reflector", "description": "Reflect across multiple languages", "icon": "🌐", "unlocked": False, "progress": 0, "max_progress": 2, "category": "expression"},
-            {"id": "deep_diver", "title": "Deep Explorer", "description": "Write a detailed reflection (200+ words)", "icon": "📖", "unlocked": False, "progress": 0, "max_progress": 1, "category": "expression"},
-            {"id": "night_calm", "title": "Night Calm", "description": "Reflect during peaceful evening hours (after 9 PM)", "icon": "🌙", "unlocked": False, "progress": 0, "max_progress": 1, "category": "mindfulness"},
-            {"id": "morning_sun", "title": "Morning Sun", "description": "Start your day with morning awareness (before 10 AM)", "icon": "🌅", "unlocked": False, "progress": 0, "max_progress": 1, "category": "mindfulness"},
-            {"id": "milestone_10", "title": "10 Reflections", "description": "Complete 10 journal reflections", "icon": "💎", "unlocked": False, "progress": 0, "max_progress": 10, "category": "milestone"}
+            {"id": "first_entry", "title": "First Spark", "description": "Write your first reflection", "icon": "sprout", "unlocked": False, "progress": 0, "max_progress": 1, "category": "milestone"},
+            {"id": "streak_3", "title": "3-Day Flow", "description": "Maintain a 3-day journaling streak", "icon": "flame", "unlocked": False, "progress": 0, "max_progress": 3, "category": "streak"},
+            {"id": "streak_7", "title": "7-Day Clarity", "description": "Maintain a 7-day mindful habit", "icon": "compass", "unlocked": False, "progress": 0, "max_progress": 7, "category": "streak"},
+            {"id": "streak_14", "title": "14-Day Fortitude", "description": "Maintain a 14-day streak", "icon": "mountain", "unlocked": False, "progress": 0, "max_progress": 14, "category": "streak"},
+            {"id": "streak_30", "title": "30-Day Zen Master", "description": "Complete a full month of awareness", "icon": "lotus", "unlocked": False, "progress": 0, "max_progress": 30, "category": "streak"},
+            {"id": "polyglot", "title": "Polyglot Reflector", "description": "Reflect across multiple languages", "icon": "languages", "unlocked": False, "progress": 0, "max_progress": 2, "category": "expression"},
+            {"id": "deep_diver", "title": "Deep Explorer", "description": "Write a detailed reflection (200+ words)", "icon": "feather", "unlocked": False, "progress": 0, "max_progress": 1, "category": "expression"},
+            {"id": "night_calm", "title": "Night Calm", "description": "Reflect during peaceful evening hours (after 9 PM)", "icon": "moon", "unlocked": False, "progress": 0, "max_progress": 1, "category": "mindfulness"},
+            {"id": "morning_sun", "title": "Morning Sun", "description": "Start your day with morning awareness (before 10 AM)", "icon": "sunrise", "unlocked": False, "progress": 0, "max_progress": 1, "category": "mindfulness"},
+            {"id": "milestone_10", "title": "10 Reflections", "description": "Complete 10 journal reflections", "icon": "gem", "unlocked": False, "progress": 0, "max_progress": 10, "category": "milestone"}
         ]
         
         return {

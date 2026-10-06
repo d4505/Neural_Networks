@@ -116,8 +116,8 @@ export function Sidebar() {
                 </div>
 
                 {isRewards && streakData?.current_streak > 0 && (
-                  <span className="flex items-center space-x-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-950/60 dark:text-orange-400 border border-orange-200 dark:border-orange-800/60">
-                    <Flame className="w-3 h-3 fill-current" />
+                  <span className="flex items-center space-x-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#D6E3D3] text-[#263825] dark:bg-[#1D2D23] dark:text-[#B4D4B0] border border-[#B4D4B0] dark:border-[#2D4434]">
+                    <Flame className="w-3 h-3 text-[#5F7E5C] dark:text-[#86A882] fill-current" />
                     <span>{streakData.current_streak}d</span>
                   </span>
                 )}
