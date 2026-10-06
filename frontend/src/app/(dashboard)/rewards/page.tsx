@@ -168,27 +168,27 @@ export default function RewardsPage() {
 
       {/* Badges Section */}
       <div className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <h2 className="text-xl font-serif font-bold text-[#24201D] dark:text-[#F5EFE6]">
               Milestones & Badges
             </h2>
-            <p className="text-xs text-[#596557] dark:text-[#A6A099]">
+            <p className="text-xs text-[#596557] dark:text-[#A6A099] mt-0.5">
               Unlock badges as you deepen your journaling habit and express your feelings across languages.
             </p>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1 bg-[#E4ECE2] dark:bg-[#19221C] border border-[#C8D7C5] dark:border-[#28362D] rounded-2xl">
+          {/* Clean Segmented Category Tabs */}
+          <div className="flex items-center gap-1 p-1 bg-[#E4ECE2] dark:bg-[#19221C] border border-[#C8D7C5] dark:border-[#28362D] rounded-2xl overflow-x-auto shrink-0 max-w-full">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={clsx(
-                  "px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer",
+                  "px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0",
                   selectedCategory === cat.id
                     ? "bg-[#5F7E5C] dark:bg-[#86A882] text-white dark:text-[#0F1713] shadow-xs"
-                    : "text-[#596557] dark:text-[#A6A099] hover:text-[#24201D] dark:hover:text-[#F5EFE6]"
+                    : "text-[#596557] dark:text-[#A6A099] hover:text-[#24201D] dark:hover:text-[#F5EFE6] hover:bg-[#D6E3D3]/50 dark:hover:bg-[#1D2D23]/50"
                 )}
               >
                 {cat.label}
