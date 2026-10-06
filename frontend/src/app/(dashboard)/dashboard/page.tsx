@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import useSWR from "swr";
-import { PlusCircle, Loader2, HeartHandshake, TrendingDown, Sparkles, BookOpen, Calendar as CalendarIcon, ArrowRight, ShieldAlert } from "lucide-react";
+import { PlusCircle, Loader2, HeartHandshake, TrendingDown, Sparkles, BookOpen, Calendar as CalendarIcon, ArrowRight, ShieldAlert, Wind } from "lucide-react";
 import api from "../../../lib/api";
+import { StreakRewardCard } from "../../../components/StreakRewardCard";
+import { BreathingModal } from "../../../components/BreathingModal";
 
 const fetcher = (url: string) => api.get(url).then((res) => res.data);
 
@@ -11,6 +14,7 @@ export default function DashboardPage() {
   const { data: entries, error: entriesError } = useSWR("/api/journal/", fetcher);
   const { data: trajectoryData } = useSWR("/api/insights/trajectory?days=7", fetcher);
   const { data: user } = useSWR("/api/auth/me", fetcher);
+  const [isBreathingOpen, setIsBreathingOpen] = useState(false);
 
   const hour = new Date().getHours();
   let greeting = "Good evening";
@@ -45,14 +49,28 @@ export default function DashboardPage() {
             Take a gentle pause. How has your day been feeling?
           </p>
         </div>
-        <Link
-          href="/journal"
-          className="inline-flex items-center justify-center space-x-2 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] text-white dark:text-[#0F1713] px-5 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
-        >
-          <PlusCircle className="w-5 h-5" />
-          <span>Write New Reflection</span>
-        </Link>
+
+        <div className="flex items-center space-x-3">
+          <button
+            onClick={() => setIsBreathingOpen(true)}
+            className="inline-flex items-center justify-center space-x-2 bg-[#D6E3D3] hover:bg-[#C8D7C5] dark:bg-[#1D2D23] dark:hover:bg-[#2D4434] text-[#263825] dark:text-[#B4D4B0] border border-[#C8D7C5] dark:border-[#2D4434] px-4 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
+          >
+            <Wind className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882]" />
+            <span>60s Breath</span>
+          </button>
+
+          <Link
+            href="/journal"
+            className="inline-flex items-center justify-center space-x-2 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] text-white dark:text-[#0F1713] px-5 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
+          >
+            <PlusCircle className="w-5 h-5" />
+            <span>Write New Reflection</span>
+          </Link>
+        </div>
       </header>
+
+      {/* Mindful Streak & Consistency Widget */}
+      <StreakRewardCard />
 
       {/* Gentle Wellbeing Nudge Banner (Section 17 requirement) */}
       {showNudge && (
@@ -230,6 +248,11 @@ export default function DashboardPage() {
           </div>
         </>
       )}
+
+      <BreathingModal
+        isOpen={isBreathingOpen}
+        onClose={() => setIsBreathingOpen(false)}
+      />
     </div>
   );
 }

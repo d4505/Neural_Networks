@@ -1,0 +1,188 @@
+[
+  {
+    "text": "Today I feel really happy and calm because I finished my exams.",
+    "language": "English",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "I feel so lonely and sad, nothing seems to be working out.",
+    "language": "English",
+    "sentiment": "negative",
+    "emotion": "sadness"
+  },
+  {
+    "text": "Too much workload today, deadlines are stressing me out completely.",
+    "language": "English",
+    "sentiment": "negative",
+    "emotion": "stress"
+  },
+  {
+    "text": "Feeling anxious about the interview tomorrow morning.",
+    "language": "English",
+    "sentiment": "negative",
+    "emotion": "anxiety"
+  },
+  {
+    "text": "Had a peaceful walk by the park, feeling centered and grateful.",
+    "language": "English",
+    "sentiment": "positive",
+    "emotion": "calm"
+  },
+  {
+    "text": "Things were hard in the morning, but I believe tomorrow will be better.",
+    "language": "English",
+    "sentiment": "mixed",
+    "emotion": "hopeful"
+  },
+  {
+    "text": "आज का दिन बहुत अच्छा रहा, परिवार के साथ समय बिताकर मन खुश हो गया।",
+    "language": "Hindi",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "आज ऑफिस में बहुत तनाव था, काम का बोझ बढ़ता ही जा रहा है।",
+    "language": "Hindi",
+    "sentiment": "negative",
+    "emotion": "stress"
+  },
+  {
+    "text": "मन बहुत उदास और अशांत है, कुछ भी अच्छा नहीं लग रहा।",
+    "language": "Hindi",
+    "sentiment": "negative",
+    "emotion": "sadness"
+  },
+  {
+    "text": "कल के रिजल्ट को लेकर बहुत घबराहट और चिंता हो रही है।",
+    "language": "Hindi",
+    "sentiment": "negative",
+    "emotion": "anxiety"
+  },
+  {
+    "text": "Aaj mood bahut accha hai, friends ke sath dinner pe gaye the aur maza aaya.",
+    "language": "Hindi-English",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "Aaj office me bahut jyada stress tha, manager ne deadline pre-pone kar di.",
+    "language": "Hindi-English",
+    "sentiment": "negative",
+    "emotion": "stress"
+  },
+  {
+    "text": "Mujhe future ko lekar bahut tension aur anxiety ho rahi hai.",
+    "language": "Hindi-English",
+    "sentiment": "negative",
+    "emotion": "anxiety"
+  },
+  {
+    "text": "Thoda difficult time chal raha hai but I have full hope sab theek ho jayega.",
+    "language": "Hindi-English",
+    "sentiment": "mixed",
+    "emotion": "hopeful"
+  },
+  {
+    "text": "இன்று கல்லூரி மிகவும் அமைதியாகவும் மகிழ்ச்சியாகவும் இருந்தது.",
+    "language": "Tamil",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "இன்று வேலை அழுத்தம் தாங்க முடியவில்லை, மிகவும் மன உளைச்சலாக உள்ளது.",
+    "language": "Tamil",
+    "sentiment": "negative",
+    "emotion": "stress"
+  },
+  {
+    "text": "Today college la romba stressful ah irundhuchu but friends kooda pesina apram konjam better feel panninen.",
+    "language": "Tamil-English",
+    "sentiment": "mixed",
+    "emotion": "hopeful"
+  },
+  {
+    "text": "Inniku romba kashtama iruku, I feel very down and stressed with project work.",
+    "language": "Tamil-English",
+    "sentiment": "negative",
+    "emotion": "stress"
+  },
+  {
+    "text": "Exam pathi ninaichaale romba பயம் and anxiety varudhu, nothing is prepared.",
+    "language": "Tamil-English",
+    "sentiment": "negative",
+    "emotion": "anxiety"
+  },
+  {
+    "text": "Weekend nalla relax panni meditate panninen, mind is totally calm now.",
+    "language": "Tamil-English",
+    "sentiment": "positive",
+    "emotion": "calm"
+  },
+  {
+    "text": "ഇന്ന് എനിക്ക് വളരെ സന്തോഷം തോന്നുന്നു, എല്ലാ കാര്യങ്ങളും നന്നായി നടന്നു.",
+    "language": "Malayalam",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "ജോലിയിൽ ഭയങ്കര സ്ട്രെസ്സ് ആണ്, ഉറങ്ങാൻ പോലും പറ്റുന്നില്ല.",
+    "language": "Malayalam",
+    "sentiment": "negative",
+    "emotion": "stress"
+  },
+  {
+    "text": "Njan valare santhoshavan aanu, today was a great day with family.",
+    "language": "Malayalam-English",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "Innathe divasam valare kashtapadanu, exam result orthu tension aavunnu.",
+    "language": "Malayalam-English",
+    "sentiment": "negative",
+    "emotion": "anxiety"
+  },
+  {
+    "text": "Kure issues undayirunnu, ennalum nalla oru pratheeksha undu.",
+    "language": "Malayalam-English",
+    "sentiment": "mixed",
+    "emotion": "hopeful"
+  },
+  {
+    "text": "ఈ రోజు నాకు చాలా సంతోషంగా మరియు ప్రశాంతంగా ఉంది.",
+    "language": "Telugu",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "ఆఫీసులో పని ఒత్తిడి చాలా ఎక్కువగా ఉంది, చాలా అలసిపోయాను.",
+    "language": "Telugu",
+    "sentiment": "negative",
+    "emotion": "stress"
+  },
+  {
+    "text": "Chala badhaga undi, nothing is going right in life right now.",
+    "language": "Telugu-English",
+    "sentiment": "negative",
+    "emotion": "sadness"
+  },
+  {
+    "text": "Tomorrow presentation undi, chala nervous ga tension paduthunna.",
+    "language": "Telugu-English",
+    "sentiment": "negative",
+    "emotion": "anxiety"
+  },
+  {
+    "text": "Today project complete chesamu, feeling very happy and relieved.",
+    "language": "Telugu-English",
+    "sentiment": "positive",
+    "emotion": "joy"
+  },
+  {
+    "text": "Starting lo chala kastam ga anipinchindi kani ipudu baga improve ayyindi.",
+    "language": "Telugu-English",
+    "sentiment": "mixed",
+    "emotion": "hopeful"
+  }
+]

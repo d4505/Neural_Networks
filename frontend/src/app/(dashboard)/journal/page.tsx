@@ -13,8 +13,10 @@ import {
   ShieldAlert,
   Globe,
   X,
+  Wind,
 } from "lucide-react";
 import api from "../../../lib/api";
+import { BreathingModal } from "../../../components/BreathingModal";
 
 const fetcher = (url: string) => api.get(url).then((res) => res.data);
 
@@ -27,6 +29,7 @@ export default function JournalPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedEmotion, setSelectedEmotion] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [isBreathingOpen, setIsBreathingOpen] = useState(false);
 
   // Edit State
   const [editingEntry, setEditingEntry] = useState<any | null>(null);
@@ -154,7 +157,7 @@ export default function JournalPage() {
   return (
     <div className="space-y-8 pb-16">
       {/* Header */}
-      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl sm:text-4xl font-serif text-[#24201D] dark:text-[#F5EFE6]">
             My Journal
@@ -163,6 +166,14 @@ export default function JournalPage() {
             Express yourself naturally in English, Hindi, Tamil, Malayalam, Telugu, or conversational mixes.
           </p>
         </div>
+
+        <button
+          onClick={() => setIsBreathingOpen(true)}
+          className="inline-flex items-center justify-center space-x-2 bg-[#D6E3D3] hover:bg-[#C8D7C5] dark:bg-[#1D2D23] dark:hover:bg-[#2D4434] text-[#263825] dark:text-[#B4D4B0] border border-[#C8D7C5] dark:border-[#2D4434] px-4 py-2 rounded-2xl font-semibold text-xs shadow-xs transition-all cursor-pointer shrink-0"
+        >
+          <Wind className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882]" />
+          <span>60s Mindful Breath</span>
+        </button>
       </header>
 
       {/* Write New Reflection Card */}
@@ -443,6 +454,11 @@ export default function JournalPage() {
           </div>
         </div>
       )}
+
+      <BreathingModal
+        isOpen={isBreathingOpen}
+        onClose={() => setIsBreathingOpen(false)}
+      />
     </div>
   );
 }

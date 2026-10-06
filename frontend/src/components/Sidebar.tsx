@@ -12,6 +12,9 @@ import {
   Sun,
   LogOut,
   Sparkles,
+  Award,
+  Wind,
+  Flame,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
@@ -20,6 +23,7 @@ import useSWR from "swr";
 import api from "../lib/api";
 
 import { AntaraLogoIcon } from "./AntaraLogo";
+import { BreathingModal } from "./BreathingModal";
 
 const fetcher = (url: string) => api.get(url).then((res) => res.data);
 
@@ -27,6 +31,7 @@ const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "My Journal", href: "/journal", icon: BookOpen },
   { name: "Insights", href: "/insights", icon: BarChart2 },
+  { name: "Streaks & Rewards", href: "/rewards", icon: Award },
   { name: "Calendar", href: "/calendar", icon: Calendar },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
@@ -36,8 +41,10 @@ export function Sidebar() {
   const router = useRouter();
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isBreathingOpen, setIsBreathingOpen] = useState(false);
 
   const { data: user } = useSWR("/api/auth/me", fetcher);
+  const { data: streakData } = useSWR("/api/insights/streaks", fetcher);
 
   useEffect(() => {
     setMounted(true);
@@ -52,44 +59,72 @@ export function Sidebar() {
   };
 
   return (
-    <div className="flex flex-col w-64 border-r border-[#C8D7C5] dark:border-[#28362D] bg-[#E8EFE6]/90 dark:bg-[#141C17] h-screen p-5 shrink-0 select-none transition-colors duration-200 backdrop-blur-xs">
-      {/* Brand Header */}
-      <Link href="/dashboard" className="flex items-center space-x-3 mb-8 px-2 group">
-        <div className="w-11 h-11 bg-gradient-to-tr from-[#D6E3D3] to-[#E4ECE2] dark:from-[#1D2D23] dark:to-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] rounded-2xl flex items-center justify-center p-1.5 shadow-xs group-hover:scale-105 transition-transform shrink-0">
-          <AntaraLogoIcon size={30} />
-        </div>
-        <div>
-          <span className="text-2xl font-serif font-bold tracking-tight text-[#24201D] dark:text-[#F5EFE6] block leading-none">
-            Antara
-          </span>
-          <span className="text-[10px] uppercase font-semibold tracking-wider text-[#5F7E5C] dark:text-[#86A882] block mt-1">
-            Multilingual Journal
-          </span>
-        </div>
-      </Link>
+    <>
+      <div className="flex flex-col w-64 border-r border-[#C8D7C5] dark:border-[#28362D] bg-[#E8EFE6]/90 dark:bg-[#141C17] h-screen p-5 shrink-0 select-none transition-colors duration-200 backdrop-blur-xs">
+        {/* Brand Header */}
+        <Link href="/dashboard" className="flex items-center space-x-3 mb-6 px-2 group">
+          <div className="w-11 h-11 bg-gradient-to-tr from-[#D6E3D3] to-[#E4ECE2] dark:from-[#1D2D23] dark:to-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] rounded-2xl flex items-center justify-center p-1.5 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+            <AntaraLogoIcon size={30} />
+          </div>
+          <div>
+            <span className="text-2xl font-serif font-bold tracking-tight text-[#24201D] dark:text-[#F5EFE6] block leading-none">
+              Antara
+            </span>
+            <span className="text-[10px] uppercase font-semibold tracking-wider text-[#5F7E5C] dark:text-[#86A882] block mt-1">
+              Multilingual Journal
+            </span>
+          </div>
+        </Link>
 
-      {/* Navigation Items */}
-      <nav className="flex-1 space-y-1.5">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={clsx(
-                "flex items-center space-x-3 px-3.5 py-2.5 rounded-2xl transition-all text-sm",
-                isActive
-                  ? "bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#263825] dark:text-[#B4D4B0] font-bold shadow-xs border border-[#C8D7C5]/70 dark:border-transparent"
-                  : "text-[#596557] dark:text-[#A6A099] hover:bg-[#DCE7DA]/70 dark:hover:bg-[#1E2822] hover:text-[#24201D] dark:hover:text-[#F5EFE6] font-medium"
-              )}
-            >
-              <Icon className="w-5 h-5" />
-              <span>{item.name}</span>
-            </Link>
-          );
-        })}
-      </nav>
+        {/* Quick Mindful Breathing Button */}
+        <div className="mb-4">
+          <button
+            onClick={() => setIsBreathingOpen(true)}
+            className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl bg-[#D6E3D3]/70 hover:bg-[#D6E3D3] dark:bg-[#1D2D23]/80 dark:hover:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] text-xs font-semibold text-[#263825] dark:text-[#B4D4B0] shadow-2xs transition-all cursor-pointer group"
+          >
+            <div className="flex items-center space-x-2">
+              <Wind className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882] group-hover:rotate-45 transition-transform" />
+              <span>Mindful Breath</span>
+            </div>
+            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#E4ECE2] dark:bg-[#141C17] text-[#596557] dark:text-[#A6A099]">
+              60s
+            </span>
+          </button>
+        </div>
+
+        {/* Navigation Items */}
+        <nav className="flex-1 space-y-1.5 overflow-y-auto">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href;
+            const isRewards = item.href === "/rewards";
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={clsx(
+                  "flex items-center justify-between px-3.5 py-2.5 rounded-2xl transition-all text-sm",
+                  isActive
+                    ? "bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#263825] dark:text-[#B4D4B0] font-bold shadow-xs border border-[#C8D7C5]/70 dark:border-transparent"
+                    : "text-[#596557] dark:text-[#A6A099] hover:bg-[#DCE7DA]/70 dark:hover:bg-[#1E2822] hover:text-[#24201D] dark:hover:text-[#F5EFE6] font-medium"
+                )}
+              >
+                <div className="flex items-center space-x-3">
+                  <Icon className="w-5 h-5" />
+                  <span>{item.name}</span>
+                </div>
+
+                {isRewards && streakData?.current_streak > 0 && (
+                  <span className="flex items-center space-x-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-950/60 dark:text-orange-400 border border-orange-200 dark:border-orange-800/60">
+                    <Flame className="w-3 h-3 fill-current" />
+                    <span>{streakData.current_streak}d</span>
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+        </nav>
 
       {/* User Mini Bar & Actions */}
       <div className="pt-4 border-t border-[#C8D7C5] dark:border-[#28362D] space-y-2">
@@ -134,5 +169,11 @@ export function Sidebar() {
         </button>
       </div>
     </div>
+
+    <BreathingModal
+      isOpen={isBreathingOpen}
+      onClose={() => setIsBreathingOpen(false)}
+    />
+  </>
   );
 }

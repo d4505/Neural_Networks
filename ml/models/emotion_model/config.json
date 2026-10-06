@@ -1,0 +1,25 @@
+{
+    "model_name": "google/muril-base-cased",
+    "sentiment_categories": [
+        "negative",
+        "mixed",
+        "neutral",
+        "positive"
+    ],
+    "emotion_categories": [
+        "sadness",
+        "stress",
+        "anxiety",
+        "hopeful",
+        "calm",
+        "joy",
+        "neutral"
+    ],
+    "metrics": {
+        "emotion_accuracy": 0.9013333333333333,
+        "emotion_f1": 0.9014156637067525,
+        "sentiment_accuracy": 0.9493333333333334,
+        "sentiment_f1": 0.9492199688764394,
+        "valence_mse": 0.0845328137869411
+    }
+}

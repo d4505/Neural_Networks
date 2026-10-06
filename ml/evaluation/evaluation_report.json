@@ -1,0 +1,301 @@
+{
+    "model_architecture": "Google MuRIL Multitask Shared Encoder",
+    "supported_languages": [
+        "English",
+        "Hindi",
+        "Tamil",
+        "Malayalam",
+        "Telugu",
+        "Code-Mixed (Hinglish, Tanglish, Manglish, Tenglish)"
+    ],
+    "test_metrics": {
+        "sentiment_accuracy": 0.5444,
+        "sentiment_macro_f1": 0.5489,
+        "sentiment_weighted_f1": 0.5489,
+        "emotion_accuracy": 0.5722,
+        "emotion_weighted_f1": 0.5799,
+        "valence_mse": 0.2824,
+        "test_samples_count": 180
+    },
+    "supplementary_test_samples": [
+        {
+            "text": "Today I feel really happy and calm because I finished my exams.",
+            "language": "English",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "joy",
+            "predicted_emotion": "joy",
+            "valence_score": 0.13
+        },
+        {
+            "text": "I feel so lonely and sad, nothing seems to be working out.",
+            "language": "English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "sadness",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.061
+        },
+        {
+            "text": "Too much workload today, deadlines are stressing me out completely.",
+            "language": "English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "stress",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.095
+        },
+        {
+            "text": "Feeling anxious about the interview tomorrow morning.",
+            "language": "English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "anxiety",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.108
+        },
+        {
+            "text": "Had a peaceful walk by the park, feeling centered and grateful.",
+            "language": "English",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "positive",
+            "true_emotion": "calm",
+            "predicted_emotion": "joy",
+            "valence_score": 0.215
+        },
+        {
+            "text": "Things were hard in the morning, but I believe tomorrow will be better.",
+            "language": "English",
+            "true_sentiment": "mixed",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "hopeful",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.105
+        },
+        {
+            "text": "आज का दिन बहुत अच्छा रहा, परिवार के साथ समय बिताकर मन खुश हो गया।",
+            "language": "Hindi",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "joy",
+            "predicted_emotion": "anxiety",
+            "valence_score": 0.002
+        },
+        {
+            "text": "आज ऑफिस में बहुत तनाव था, काम का बोझ बढ़ता ही जा रहा है।",
+            "language": "Hindi",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "stress",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.083
+        },
+        {
+            "text": "मन बहुत उदास और अशांत है, कुछ भी अच्छा नहीं लग रहा।",
+            "language": "Hindi",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "sadness",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.037
+        },
+        {
+            "text": "कल के रिजल्ट को लेकर बहुत घबराहट और चिंता हो रही है।",
+            "language": "Hindi",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "anxiety",
+            "predicted_emotion": "anxiety",
+            "valence_score": 0.019
+        },
+        {
+            "text": "Aaj mood bahut accha hai, friends ke sath dinner pe gaye the aur maza aaya.",
+            "language": "Hindi-English",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "neutral",
+            "true_emotion": "joy",
+            "predicted_emotion": "calm",
+            "valence_score": -0.084
+        },
+        {
+            "text": "Aaj office me bahut jyada stress tha, manager ne deadline pre-pone kar di.",
+            "language": "Hindi-English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "neutral",
+            "true_emotion": "stress",
+            "predicted_emotion": "calm",
+            "valence_score": -0.079
+        },
+        {
+            "text": "Mujhe future ko lekar bahut tension aur anxiety ho rahi hai.",
+            "language": "Hindi-English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "neutral",
+            "true_emotion": "anxiety",
+            "predicted_emotion": "calm",
+            "valence_score": -0.046
+        },
+        {
+            "text": "Thoda difficult time chal raha hai but I have full hope sab theek ho jayega.",
+            "language": "Hindi-English",
+            "true_sentiment": "mixed",
+            "predicted_sentiment": "neutral",
+            "true_emotion": "hopeful",
+            "predicted_emotion": "calm",
+            "valence_score": -0.013
+        },
+        {
+            "text": "இன்று கல்லூரி மிகவும் அமைதியாகவும் மகிழ்ச்சியாகவும் இருந்தது.",
+            "language": "Tamil",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "joy",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.112
+        },
+        {
+            "text": "இன்று வேலை அழுத்தம் தாங்க முடியவில்லை, மிகவும் மன உளைச்சலாக உள்ளது.",
+            "language": "Tamil",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "stress",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.125
+        },
+        {
+            "text": "Today college la romba stressful ah irundhuchu but friends kooda pesina apram konjam better feel panninen.",
+            "language": "Tamil-English",
+            "true_sentiment": "mixed",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "hopeful",
+            "predicted_emotion": "sadness",
+            "valence_score": -0.17
+        },
+        {
+            "text": "Inniku romba kashtama iruku, I feel very down and stressed with project work.",
+            "language": "Tamil-English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "stress",
+            "predicted_emotion": "sadness",
+            "valence_score": -0.138
+        },
+        {
+            "text": "Exam pathi ninaichaale romba பயம் and anxiety varudhu, nothing is prepared.",
+            "language": "Tamil-English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "anxiety",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.187
+        },
+        {
+            "text": "Weekend nalla relax panni meditate panninen, mind is totally calm now.",
+            "language": "Tamil-English",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "calm",
+            "predicted_emotion": "sadness",
+            "valence_score": -0.14
+        },
+        {
+            "text": "ഇന്ന് എനിക്ക് വളരെ സന്തോഷം തോന്നുന്നു, എല്ലാ കാര്യങ്ങളും നന്നായി നടന്നു.",
+            "language": "Malayalam",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "neutral",
+            "true_emotion": "joy",
+            "predicted_emotion": "calm",
+            "valence_score": -0.07
+        },
+        {
+            "text": "ജോലിയിൽ ഭയങ്കര സ്ട്രെസ്സ് ആണ്, ഉറങ്ങാൻ പോലും പറ്റുന്നില്ല.",
+            "language": "Malayalam",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "neutral",
+            "true_emotion": "stress",
+            "predicted_emotion": "calm",
+            "valence_score": -0.051
+        },
+        {
+            "text": "Njan valare santhoshavan aanu, today was a great day with family.",
+            "language": "Malayalam-English",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "joy",
+            "predicted_emotion": "sadness",
+            "valence_score": -0.05
+        },
+        {
+            "text": "Innathe divasam valare kashtapadanu, exam result orthu tension aavunnu.",
+            "language": "Malayalam-English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "neutral",
+            "true_emotion": "anxiety",
+            "predicted_emotion": "calm",
+            "valence_score": -0.199
+        },
+        {
+            "text": "Kure issues undayirunnu, ennalum nalla oru pratheeksha undu.",
+            "language": "Malayalam-English",
+            "true_sentiment": "mixed",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "hopeful",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.228
+        },
+        {
+            "text": "ఈ రోజు నాకు చాలా సంతోషంగా మరియు ప్రశాంతంగా ఉంది.",
+            "language": "Telugu",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "positive",
+            "true_emotion": "joy",
+            "predicted_emotion": "joy",
+            "valence_score": 0.207
+        },
+        {
+            "text": "ఆఫీసులో పని ఒత్తిడి చాలా ఎక్కువగా ఉంది, చాలా అలసిపోయాను.",
+            "language": "Telugu",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "stress",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.126
+        },
+        {
+            "text": "Chala badhaga undi, nothing is going right in life right now.",
+            "language": "Telugu-English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "sadness",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.19
+        },
+        {
+            "text": "Tomorrow presentation undi, chala nervous ga tension paduthunna.",
+            "language": "Telugu-English",
+            "true_sentiment": "negative",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "anxiety",
+            "predicted_emotion": "sadness",
+            "valence_score": -0.184
+        },
+        {
+            "text": "Today project complete chesamu, feeling very happy and relieved.",
+            "language": "Telugu-English",
+            "true_sentiment": "positive",
+            "predicted_sentiment": "positive",
+            "true_emotion": "joy",
+            "predicted_emotion": "joy",
+            "valence_score": 0.123
+        },
+        {
+            "text": "Starting lo chala kastam ga anipinchindi kani ipudu baga improve ayyindi.",
+            "language": "Telugu-English",
+            "true_sentiment": "mixed",
+            "predicted_sentiment": "mixed",
+            "true_emotion": "hopeful",
+            "predicted_emotion": "anxiety",
+            "valence_score": -0.188
+        }
+    ]
+}

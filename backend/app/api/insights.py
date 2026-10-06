@@ -251,3 +251,267 @@ def get_monthly_insights(db: Session = Depends(get_db), current_user: User = Dep
         "observed_pattern": compute_observed_pattern(trajectory),
         "show_nudge": detect_sustained_downward_trend(scores)
     }
+
+@router.get("/streaks")
+def get_streak_and_rewards(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    """
+    Calculates user's consecutive day streaks, habit matrix, and unlockable rewards/milestones.
+    """
+    import json
+    entries = db.query(DiaryEntry).filter(
+        DiaryEntry.user_id == current_user.id
+    ).order_by(DiaryEntry.created_at.asc()).all()
+    
+    total_entries = len(entries)
+    if total_entries == 0:
+        today = datetime.utcnow().date()
+        habit_days = []
+        for i in range(6, -1, -1):
+            d = today - timedelta(days=i)
+            habit_days.append({
+                "date": d.strftime("%Y-%m-%d"),
+                "day_name": d.strftime("%a"),
+                "has_entry": False,
+                "count": 0,
+                "is_today": i == 0
+            })
+            
+        all_badges = [
+            {"id": "first_entry", "title": "First Spark", "description": "Write your first reflection", "icon": "🌱", "unlocked": False, "progress": 0, "max_progress": 1, "category": "milestone"},
+            {"id": "streak_3", "title": "3-Day Flow", "description": "Maintain a 3-day journaling streak", "icon": "🔥", "unlocked": False, "progress": 0, "max_progress": 3, "category": "streak"},
+            {"id": "streak_7", "title": "7-Day Clarity", "description": "Maintain a 7-day mindful habit", "icon": "✨", "unlocked": False, "progress": 0, "max_progress": 7, "category": "streak"},
+            {"id": "streak_14", "title": "14-Day Fortitude", "description": "Maintain a 14-day streak", "icon": "🌿", "unlocked": False, "progress": 0, "max_progress": 14, "category": "streak"},
+            {"id": "streak_30", "title": "30-Day Zen Master", "description": "Complete a full month of awareness", "icon": "👑", "unlocked": False, "progress": 0, "max_progress": 30, "category": "streak"},
+            {"id": "polyglot", "title": "Polyglot Reflector", "description": "Reflect across multiple languages", "icon": "🌐", "unlocked": False, "progress": 0, "max_progress": 2, "category": "expression"},
+            {"id": "deep_diver", "title": "Deep Explorer", "description": "Write a detailed reflection (200+ words)", "icon": "📖", "unlocked": False, "progress": 0, "max_progress": 1, "category": "expression"},
+            {"id": "night_calm", "title": "Night Calm", "description": "Reflect during peaceful evening hours (after 9 PM)", "icon": "🌙", "unlocked": False, "progress": 0, "max_progress": 1, "category": "mindfulness"},
+            {"id": "morning_sun", "title": "Morning Sun", "description": "Start your day with morning awareness (before 10 AM)", "icon": "🌅", "unlocked": False, "progress": 0, "max_progress": 1, "category": "mindfulness"},
+            {"id": "milestone_10", "title": "10 Reflections", "description": "Complete 10 journal reflections", "icon": "💎", "unlocked": False, "progress": 0, "max_progress": 10, "category": "milestone"}
+        ]
+        
+        return {
+            "current_streak": 0,
+            "longest_streak": 0,
+            "total_entries": 0,
+            "streak_active_today": False,
+            "grace_period_active": False,
+            "habit_matrix": habit_days,
+            "badges": all_badges,
+            "unlocked_count": 0,
+            "total_badges": len(all_badges),
+            "level": 1,
+            "xp": 0,
+            "next_level_xp": 150
+        }
+
+    # Extract dates & entry metadata
+    entry_dates = set()
+    all_languages = set()
+    has_night_entry = False
+    has_morning_entry = False
+    max_word_count = 0
+    date_to_entries = {}
+
+    for e in entries:
+        dt = e.created_at
+        d_str = dt.strftime("%Y-%m-%d")
+        entry_dates.add(d_str)
+        
+        if d_str not in date_to_entries:
+            date_to_entries[d_str] = []
+        date_to_entries[d_str].append(e)
+
+        words = len((e.content or "").split())
+        if words > max_word_count:
+            max_word_count = words
+            
+        if dt.hour >= 21 or dt.hour < 4:
+            has_night_entry = True
+        elif 5 <= dt.hour < 10:
+            has_morning_entry = True
+
+        if e.analysis and e.analysis.languages_detected:
+            try:
+                langs = json.loads(e.analysis.languages_detected)
+                for l in langs:
+                    all_languages.add(l)
+            except Exception:
+                pass
+
+    # Streak Calculation
+    today = datetime.utcnow().date()
+    yesterday = today - timedelta(days=1)
+    
+    today_str = today.strftime("%Y-%m-%d")
+    yesterday_str = yesterday.strftime("%Y-%m-%d")
+    
+    streak_active_today = today_str in entry_dates
+    grace_period_active = (not streak_active_today) and (yesterday_str in entry_dates)
+    
+    current_streak = 0
+    check_date = today if streak_active_today else yesterday
+    
+    while check_date.strftime("%Y-%m-%d") in entry_dates:
+        current_streak += 1
+        check_date -= timedelta(days=1)
+        
+    if not streak_active_today and not grace_period_active:
+        current_streak = 0
+
+    sorted_unique_dates = sorted([datetime.strptime(d, "%Y-%m-%d").date() for d in entry_dates])
+    longest_streak = 0
+    temp_streak = 0
+    prev_d = None
+    
+    for d in sorted_unique_dates:
+        if prev_d is None:
+            temp_streak = 1
+        elif (d - prev_d).days == 1:
+            temp_streak += 1
+        elif (d - prev_d).days > 1:
+            temp_streak = 1
+        prev_d = d
+        if temp_streak > longest_streak:
+            longest_streak = temp_streak
+            
+    longest_streak = max(longest_streak, current_streak)
+
+    habit_days = []
+    for i in range(6, -1, -1):
+        d = today - timedelta(days=i)
+        d_str = d.strftime("%Y-%m-%d")
+        day_entries = date_to_entries.get(d_str, [])
+        habit_days.append({
+            "date": d_str,
+            "day_name": d.strftime("%a"),
+            "has_entry": len(day_entries) > 0,
+            "count": len(day_entries),
+            "is_today": i == 0
+        })
+
+    badges = [
+        {
+            "id": "first_entry",
+            "title": "First Spark",
+            "description": "Write your first reflection",
+            "icon": "🌱",
+            "unlocked": total_entries >= 1,
+            "progress": min(total_entries, 1),
+            "max_progress": 1,
+            "category": "milestone"
+        },
+        {
+            "id": "streak_3",
+            "title": "3-Day Flow",
+            "description": "Maintain a 3-day journaling streak",
+            "icon": "🔥",
+            "unlocked": longest_streak >= 3,
+            "progress": min(longest_streak, 3),
+            "max_progress": 3,
+            "category": "streak"
+        },
+        {
+            "id": "streak_7",
+            "title": "7-Day Clarity",
+            "description": "Maintain a 7-day mindful habit",
+            "icon": "✨",
+            "unlocked": longest_streak >= 7,
+            "progress": min(longest_streak, 7),
+            "max_progress": 7,
+            "category": "streak"
+        },
+        {
+            "id": "streak_14",
+            "title": "14-Day Fortitude",
+            "description": "Maintain a 14-day streak",
+            "icon": "🌿",
+            "unlocked": longest_streak >= 14,
+            "progress": min(longest_streak, 14),
+            "max_progress": 14,
+            "category": "streak"
+        },
+        {
+            "id": "streak_30",
+            "title": "30-Day Zen Master",
+            "description": "Complete a full month of awareness",
+            "icon": "👑",
+            "unlocked": longest_streak >= 30,
+            "progress": min(longest_streak, 30),
+            "max_progress": 30,
+            "category": "streak"
+        },
+        {
+            "id": "polyglot",
+            "title": "Polyglot Reflector",
+            "description": "Reflect across multiple languages",
+            "icon": "🌐",
+            "unlocked": len(all_languages) >= 2,
+            "progress": min(len(all_languages), 2),
+            "max_progress": 2,
+            "category": "expression"
+        },
+        {
+            "id": "deep_diver",
+            "title": "Deep Explorer",
+            "description": "Write a detailed reflection (200+ words)",
+            "icon": "📖",
+            "unlocked": max_word_count >= 200,
+            "progress": 1 if max_word_count >= 200 else 0,
+            "max_progress": 1,
+            "category": "expression"
+        },
+        {
+            "id": "night_calm",
+            "title": "Night Calm",
+            "description": "Reflect during peaceful evening hours (after 9 PM)",
+            "icon": "🌙",
+            "unlocked": has_night_entry,
+            "progress": 1 if has_night_entry else 0,
+            "max_progress": 1,
+            "category": "mindfulness"
+        },
+        {
+            "id": "morning_sun",
+            "title": "Morning Sun",
+            "description": "Start your day with morning awareness (before 10 AM)",
+            "icon": "🌅",
+            "unlocked": has_morning_entry,
+            "progress": 1 if has_morning_entry else 0,
+            "max_progress": 1,
+            "category": "mindfulness"
+        },
+        {
+            "id": "milestone_10",
+            "title": "10 Reflections",
+            "description": "Complete 10 journal reflections",
+            "icon": "💎",
+            "unlocked": total_entries >= 10,
+            "progress": min(total_entries, 10),
+            "max_progress": 10,
+            "category": "milestone"
+        }
+    ]
+
+    unlocked_count = sum(1 for b in badges if b["unlocked"])
+    total_xp = (total_entries * 25) + (current_streak * 50) + (unlocked_count * 100)
+    level = (total_xp // 150) + 1
+    current_level_xp = total_xp % 150
+    next_level_xp = 150
+
+    return {
+        "current_streak": current_streak,
+        "longest_streak": longest_streak,
+        "total_entries": total_entries,
+        "streak_active_today": streak_active_today,
+        "grace_period_active": grace_period_active,
+        "habit_matrix": habit_days,
+        "badges": badges,
+        "unlocked_count": unlocked_count,
+        "total_badges": len(badges),
+        "level": level,
+        "xp": current_level_xp,
+        "total_xp": total_xp,
+        "next_level_xp": next_level_xp,
+        "max_word_count": max_word_count,
+        "languages_used": list(all_languages)
+    }
