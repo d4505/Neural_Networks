@@ -8,9 +8,9 @@ if hasattr(sys.stdout, "reconfigure"):
 
 phrases = [
     "i am angry",
-    "i was gooning but my dih fell off and i feel happy af",
-    "my name is saketh and I LOVE gooning at 12am specifically",
-    "i was walking to college today and a cat pissed all over my shoes and my pants and my hair lil bit"
+    "i was having happy tears",
+    "the sun was perfect today , i felt soo energic thought the day",
+    "i was walking to college today and a cat scratched my shoes and my mum scolded me "
 ]
 
 print("=== SCREENSHOT PHRASES INFERENCE VERIFICATION ===")
