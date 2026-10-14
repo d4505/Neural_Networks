@@ -137,6 +137,21 @@ def build_clinical_dossier(db: Session, user_id: int, days: int = 14) -> Dict[st
     
     # Empty state handling
     if total_reflections == 0:
+        empty_tod = [
+            {"period": "Morning (6am-12pm)", "count": 0, "avg_valence": 0.0},
+            {"period": "Afternoon (12pm-5pm)", "count": 0, "avg_valence": 0.0},
+            {"period": "Evening (5pm-9pm)", "count": 0, "avg_valence": 0.0},
+            {"period": "Late Night (9pm-6am)", "count": 0, "avg_valence": 0.0}
+        ]
+        empty_dow = [
+            {"day": "Monday", "count": 0, "avg_valence": 0.0},
+            {"day": "Tuesday", "count": 0, "avg_valence": 0.0},
+            {"day": "Wednesday", "count": 0, "avg_valence": 0.0},
+            {"day": "Thursday", "count": 0, "avg_valence": 0.0},
+            {"day": "Friday", "count": 0, "avg_valence": 0.0},
+            {"day": "Saturday", "count": 0, "avg_valence": 0.0},
+            {"day": "Sunday", "count": 0, "avg_valence": 0.0}
+        ]
         return {
             "time_horizon_days": days,
             "total_entries": 0,
@@ -145,7 +160,7 @@ def build_clinical_dossier(db: Session, user_id: int, days: int = 14) -> Dict[st
             "clinical_risk_tier": "Minimal",
             "slope_angle": 0.0,
             "emotional_polarity": {"positive": 0, "neutral": 0, "negative": 0},
-            "chronobiology": {"time_of_day": {}, "day_of_week": {}},
+            "chronobiology": {"time_of_day": empty_tod, "day_of_week": empty_dow},
             "life_domains": [],
             "key_clinical_episodes": [],
             "therapeutic_agenda": [

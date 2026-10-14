@@ -270,7 +270,7 @@ export default function ClinicalCopilotPage() {
         </div>
 
         <div className="flex items-center gap-2">
-          {dossier?.scripts_detected?.map((script: string) => (
+          {Array.isArray(dossier?.scripts_detected) && dossier.scripts_detected.map((script: string) => (
             <span
               key={script}
               className="text-[10px] font-semibold px-2.5 py-1 rounded-xl bg-[#FCFAF9] dark:bg-[#161314] text-[#726561] dark:text-[#BA8E94] border border-[#EDE3DF] dark:border-[#2D2427]"
@@ -532,7 +532,7 @@ export default function ClinicalCopilotPage() {
           </div>
 
           <div className="space-y-3">
-            {dossier?.life_domains && dossier.life_domains.length > 0 ? (
+            {Array.isArray(dossier?.life_domains) && dossier.life_domains.length > 0 ? (
               dossier.life_domains.map((dom: any) => (
                 <div
                   key={dom.domain}
@@ -599,50 +599,62 @@ export default function ClinicalCopilotPage() {
               Time of Day Breakdown
             </span>
             <div className="grid grid-cols-2 gap-2.5">
-              {dossier?.chronobiology?.time_of_day?.map((tod: any) => (
-                <div
-                  key={tod.period}
-                  className="p-3 rounded-2xl bg-[#F7F1EE]/60 dark:bg-[#161314] border border-[#EDE3DF] dark:border-[#2D2427] space-y-1"
-                >
-                  <span className="text-[11px] font-semibold text-[#241F1D] dark:text-[#EFEAEB] block truncate">
-                    {tod.period.split(" ")[0]}
-                  </span>
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-sm font-bold font-serif text-[#94676E] dark:text-[#BA8E94]">
-                      {tod.count > 0 ? (tod.avg_valence > 0 ? `+${tod.avg_valence}` : tod.avg_valence) : "—"}
+              {Array.isArray(dossier?.chronobiology?.time_of_day) && dossier.chronobiology.time_of_day.length > 0 ? (
+                dossier.chronobiology.time_of_day.map((tod: any) => (
+                  <div
+                    key={tod.period}
+                    className="p-3 rounded-2xl bg-[#F7F1EE]/60 dark:bg-[#161314] border border-[#EDE3DF] dark:border-[#2D2427] space-y-1"
+                  >
+                    <span className="text-[11px] font-semibold text-[#241F1D] dark:text-[#EFEAEB] block truncate">
+                      {tod.period.split(" ")[0]}
                     </span>
-                    <span className="text-[10px] text-[#726561] dark:text-[#9B8E91]">{tod.count} logs</span>
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-sm font-bold font-serif text-[#94676E] dark:text-[#BA8E94]">
+                        {tod.count > 0 ? (tod.avg_valence > 0 ? `+${tod.avg_valence}` : tod.avg_valence) : "—"}
+                      </span>
+                      <span className="text-[10px] text-[#726561] dark:text-[#9B8E91]">{tod.count} logs</span>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="col-span-2 p-3 text-center text-xs text-[#726561] dark:text-[#9B8E91] italic bg-[#F7F1EE]/40 dark:bg-[#161314] rounded-xl border border-[#EDE3DF] dark:border-[#2D2427]">
+                  No time-of-day data available
                 </div>
-              ))}
+              )}
             </div>
 
             <span className="text-[11px] font-semibold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91] block pt-2">
               Day of Week Vulnerability
             </span>
             <div className="flex items-end justify-between gap-1 pt-1 h-20 border-b border-[#EDE3DF] dark:border-[#2D2427] pb-1">
-              {dossier?.chronobiology?.day_of_week?.map((dow: any) => {
-                const heightPct = Math.min(100, Math.max(15, Math.abs(dow.avg_valence) * 100));
-                const isPos = dow.avg_valence >= 0;
-                return (
-                  <div key={dow.day} className="flex-1 flex flex-col items-center gap-1">
-                    <div
-                      className={`w-full max-w-[18px] rounded-t-sm transition-all ${
-                        dow.count === 0
-                          ? "bg-stone-200 dark:bg-stone-800 h-2"
-                          : isPos
-                          ? "bg-[#B58A46] dark:bg-[#C89F58]"
-                          : "bg-[#94676E] dark:bg-[#BA8E94]"
-                      }`}
-                      style={{ height: dow.count === 0 ? "4px" : `${heightPct * 0.55}px` }}
-                      title={`${dow.day}: ${dow.avg_valence} (${dow.count} entries)`}
-                    />
-                    <span className="text-[9px] text-[#726561] dark:text-[#9B8E91]">
-                      {dow.day.slice(0, 2)}
-                    </span>
-                  </div>
-                );
-              })}
+              {Array.isArray(dossier?.chronobiology?.day_of_week) && dossier.chronobiology.day_of_week.length > 0 ? (
+                dossier.chronobiology.day_of_week.map((dow: any) => {
+                  const heightPct = Math.min(100, Math.max(15, Math.abs(dow.avg_valence) * 100));
+                  const isPos = dow.avg_valence >= 0;
+                  return (
+                    <div key={dow.day} className="flex-1 flex flex-col items-center gap-1">
+                      <div
+                        className={`w-full max-w-[18px] rounded-t-sm transition-all ${
+                          dow.count === 0
+                            ? "bg-stone-200 dark:bg-stone-800 h-2"
+                            : isPos
+                            ? "bg-[#B58A46] dark:bg-[#C89F58]"
+                            : "bg-[#94676E] dark:bg-[#BA8E94]"
+                        }`}
+                        style={{ height: dow.count === 0 ? "4px" : `${heightPct * 0.55}px` }}
+                        title={`${dow.day}: ${dow.avg_valence} (${dow.count} entries)`}
+                      />
+                      <span className="text-[9px] text-[#726561] dark:text-[#9B8E91]">
+                        {dow.day.slice(0, 2)}
+                      </span>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="w-full text-center text-xs text-[#726561] dark:text-[#9B8E91] italic py-4">
+                  No day-of-week data available
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -669,7 +681,7 @@ export default function ClinicalCopilotPage() {
             Recommended In-Session Discussion Prompts
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {dossier?.therapeutic_agenda?.map((agenda: string, idx: number) => (
+            {Array.isArray(dossier?.therapeutic_agenda) && dossier.therapeutic_agenda.map((agenda: string, idx: number) => (
               <div
                 key={idx}
                 className="p-4 rounded-2xl bg-[#FCFAF9] dark:bg-[#1A1315] border border-[#EBD2A4] dark:border-[#3D2C21] flex items-start gap-3 shadow-2xs"
@@ -686,7 +698,7 @@ export default function ClinicalCopilotPage() {
         </div>
 
         {/* Significant Clinical Episodes for Review */}
-        {dossier?.key_clinical_episodes && dossier.key_clinical_episodes.length > 0 && (
+        {Array.isArray(dossier?.key_clinical_episodes) && dossier.key_clinical_episodes.length > 0 && (
           <div className="space-y-3 pt-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#72531F] dark:text-[#F3D39B]">
               Significant Emotional Episodes for Review
