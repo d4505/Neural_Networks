@@ -14,7 +14,7 @@ from app.api import auth, entries, insights, calendar, system
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Antara API — AI-Powered Multilingual Mental Health Journaling",
+    title="Swadhyaya API — AI-Powered Multilingual Mental Health Journaling",
     description="Multilingual NLP mental health journaling backend supporting English, Hindi, Tamil, Malayalam, and Telugu code-mixed reflections.",
     version="1.0.0"
 )
@@ -54,7 +54,7 @@ app.include_router(calendar.router, prefix="/calendar", tags=["Calendar Legacy"]
 @app.get("/")
 def read_root():
     return {
-        "app": "Antara",
+        "app": "Swadhyaya",
         "description": "AI-Powered Multilingual Mental Health Journaling System",
         "status": "online",
         "docs": "/docs"

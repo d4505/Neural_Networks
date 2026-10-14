@@ -156,7 +156,7 @@ def export_user_data(format: str = "json", db: Session = Depends(get_db), curren
         return Response(
             content=output.getvalue(),
             media_type="text/csv",
-            headers={"Content-Disposition": f"attachment; filename=antara_journal_export_{current_user.id}.csv"}
+            headers={"Content-Disposition": f"attachment; filename=swadhyaya_journal_export_{current_user.id}.csv"}
         )
         
     return {

@@ -80,7 +80,7 @@ export default function DashboardPage() {
           </div>
           <div className="flex-1">
             <h3 className="font-semibold text-[#24201D] dark:text-[#F5EFE6] text-sm sm:text-base">
-              A Gentle Check-in from Antara
+              A Gentle Check-in from Swadhyaya
             </h3>
             <p className="text-[#596557] dark:text-[#A6A099] text-sm mt-1 leading-relaxed">
               {trajectoryData?.nudge_message ||
@@ -107,7 +107,7 @@ export default function DashboardPage() {
             Your reflection space is ready
           </h2>
           <p className="text-[#596557] dark:text-[#A6A099] text-sm leading-relaxed">
-            Antara analyzes your authentic thoughts across English, Hindi, Tamil, Malayalam, and Telugu without fabricated data. Write your first reflection to begin your journey.
+            Swadhyaya analyzes your authentic thoughts across English, Hindi, Tamil, Malayalam, and Telugu without fabricated data. Write your first reflection to begin your journey.
           </p>
           <div className="pt-2">
             <Link

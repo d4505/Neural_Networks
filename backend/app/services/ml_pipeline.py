@@ -111,7 +111,7 @@ def screen_safety_risk(text: str) -> Dict[str, Any]:
                 "flagged": True,
                 "message": (
                     "It sounds like you are carrying a very heavy burden right now. Please know you do not have to carry it alone. "
-                    "Antara is a self-reflection tool, not an emergency service. Please connect with caring human support immediately:"
+                    "Swadhyaya is a self-reflection tool, not an emergency service. Please connect with caring human support immediately:"
                 ),
                 "helplines": [
                     {"name": "KIRAN Mental Health Helpline", "contact": "1800-599-0019", "type": "Toll-Free 24/7 (India)"},
@@ -135,7 +135,7 @@ def generate_interpretation(primary_emotion: str, secondary_emotion: Optional[st
     elif primary_emotion in ["anxiety", "stress"] and score <= 0:
         return f"Reflects feelings of disorientation, emotional overwhelm, and {primary_emotion}{token_str}. Taking a steady breath and pause is supported."
     elif primary_emotion == "sadness":
-        return f"Reflects emotional heaviness and {primary_emotion}{token_str}. Antara encourages giving yourself patience and care."
+        return f"Reflects emotional heaviness and {primary_emotion}{token_str}. Swadhyaya encourages giving yourself patience and care."
     elif primary_emotion == "hopeful":
         return f"Highlights feelings of optimism and {primary_emotion} emerging through self-reflection{token_str}."
     elif primary_emotion == "joy":

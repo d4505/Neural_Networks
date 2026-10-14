@@ -71,7 +71,7 @@ export default function LoginPage() {
           <AntaraLogoIcon size={44} />
         </div>
         <h1 className="text-3xl font-serif font-semibold text-[#24201D] dark:text-[#F5EFE6] tracking-tight">
-          Welcome to Antara
+          Welcome to Swadhyaya
         </h1>
         <p className="text-[#68625D] dark:text-[#A6A099] mt-2 text-sm">
           A safe, multilingual sanctuary for your thoughts and emotions
@@ -171,7 +171,7 @@ export default function LoginPage() {
           className="w-full py-3 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] text-white dark:text-[#0F1713] rounded-2xl font-semibold shadow-xs transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
         >
           {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
-          <span>{loading ? "Signing in..." : "Sign In to Antara"}</span>
+          <span>{loading ? "Signing in..." : "Sign In to Swadhyaya"}</span>
         </button>
       </form>
 

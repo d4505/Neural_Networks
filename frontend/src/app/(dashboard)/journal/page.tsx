@@ -358,7 +358,7 @@ export default function JournalPage() {
                         <div className="flex items-center space-x-2">
                           <Sparkles className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882]" />
                           <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
-                            Antara AI NLP Analysis
+                            Swadhyaya AI NLP Analysis
                           </span>
                         </div>
                         <span className="text-[11px] text-[#596557] dark:text-[#A6A099] font-mono">

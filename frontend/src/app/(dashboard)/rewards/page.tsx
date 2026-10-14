@@ -157,10 +157,10 @@ export default function RewardsPage() {
           </div>
           <div className="space-y-1">
             <h3 className="font-serif font-bold text-[#24201D] dark:text-[#F5EFE6] text-base">
-              Antara’s Compassionate Streak Philosophy
+              Swadhyaya’s Compassionate Streak Philosophy
             </h3>
             <p className="text-xs sm:text-sm text-[#596557] dark:text-[#A6A099] leading-relaxed max-w-2xl">
-              Journaling is a practice of care, not pressure. Antara automatically includes a <strong>36-hour Grace Day</strong> so missing a single busy day never penalizes your mindful momentum.
+              Journaling is a practice of care, not pressure. Swadhyaya automatically includes a <strong>36-hour Grace Day</strong> so missing a single busy day never penalizes your mindful momentum.
             </p>
           </div>
         </div>

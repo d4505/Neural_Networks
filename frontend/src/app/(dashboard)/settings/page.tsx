@@ -59,7 +59,7 @@ export default function SettingsPage() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = `antara_journal_reflections_${user?.id || "export"}.csv`;
+        a.download = `swadhyaya_journal_reflections_${user?.id || "export"}.csv`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
@@ -71,7 +71,7 @@ export default function SettingsPage() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = `antara_journal_reflections_${user?.id || "export"}.json`;
+        a.download = `swadhyaya_journal_reflections_${user?.id || "export"}.json`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
@@ -274,7 +274,7 @@ export default function SettingsPage() {
         </div>
 
         <p className="text-xs text-[#596557] dark:text-[#A6A099] leading-relaxed">
-          Antara is a personal self-reflection journal and does not provide clinical interventions. If you or someone you know is in crisis, free, confidential 24/7 human support is always available:
+          Swadhyaya is a personal self-reflection journal and does not provide clinical interventions. If you or someone you know is in crisis, free, confidential 24/7 human support is always available:
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">

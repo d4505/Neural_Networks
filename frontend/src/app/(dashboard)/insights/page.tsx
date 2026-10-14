@@ -159,7 +159,7 @@ export default function InsightsPage() {
             No reflections in this time frame
           </h2>
           <p className="text-[#596557] dark:text-[#A6A099] text-sm leading-relaxed">
-            Write journal reflections to view real emotional trajectories and patterns. Antara never fabricates sample analytics.
+            Write journal reflections to view real emotional trajectories and patterns. Swadhyaya never fabricates sample analytics.
           </p>
           <Link
             href="/journal"
@@ -192,7 +192,7 @@ export default function InsightsPage() {
                       "We noticed your reflections have shown a sustained downward pattern over the past week. Please remember to take things one step at a time, grant yourself rest, and reach out to someone who cares."}
                   </p>
                   <p className="text-xs text-[#5F7E5C] dark:text-[#86A882]">
-                    Antara is a supportive reflection companion, not a clinical diagnostic system.
+                    Swadhyaya is a supportive reflection companion, not a clinical diagnostic system.
                   </p>
                 </div>
               </div>

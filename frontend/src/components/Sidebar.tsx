@@ -68,7 +68,7 @@ export function Sidebar() {
           </div>
           <div>
             <span className="text-2xl font-serif font-bold tracking-tight text-[#24201D] dark:text-[#F5EFE6] block leading-none">
-              Antara
+              Swadhyaya
             </span>
             <span className="text-[10px] uppercase font-semibold tracking-wider text-[#5F7E5C] dark:text-[#86A882] block mt-1">
               Multilingual Journal

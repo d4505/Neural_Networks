@@ -182,7 +182,7 @@ export function AntaraLogo({
         </div>
         <div>
           <span className="text-2xl font-serif font-bold tracking-tight text-[#24201D] dark:text-[#F5EFE6] block leading-none">
-            Antara
+            Swadhyaya
           </span>
           <span className="text-[10px] text-[#596557] dark:text-[#86A882] uppercase tracking-widest font-semibold block mt-1">
             Multilingual Journal
@@ -194,3 +194,6 @@ export function AntaraLogo({
 
   return <AntaraLogoIcon size={size} className={className} />;
 }
+
+export const SwadhyayaLogo = AntaraLogo;
+export const SwadhyayaLogoIcon = AntaraLogoIcon;

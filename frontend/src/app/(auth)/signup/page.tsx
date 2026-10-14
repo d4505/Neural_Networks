@@ -124,7 +124,7 @@ export default function SignupPage() {
           <AntaraLogoIcon size={44} />
         </div>
         <h1 className="text-2xl font-serif font-semibold text-[#24201D] dark:text-[#F5EFE6] tracking-tight">
-          Create Your Antara Journal
+          Create Your Swadhyaya Journal
         </h1>
         <p className="text-[#68625D] dark:text-[#A6A099] mt-1 text-sm">
           A confidential, multilingual space for emotional wellbeing
@@ -388,7 +388,7 @@ export default function SignupPage() {
               className="mt-0.5 rounded border-[#E5DDD0] text-[#5F7E5C] focus:ring-[#5F7E5C]"
             />
             <span>
-              (Optional) I consent to anonymously contribute de-identified journal entries to help improve Antara&apos;s multilingual emotional understanding models.
+              (Optional) I consent to anonymously contribute de-identified journal entries to help improve Swadhyaya&apos;s multilingual emotional understanding models.
             </span>
           </label>
         </div>
