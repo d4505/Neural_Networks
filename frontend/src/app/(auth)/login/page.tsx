@@ -175,10 +175,10 @@ export default function LoginPage() {
         </button>
       </form>
 
-      <div className="mt-8 pt-6 border-t border-[#E5DDD0] dark:border-[#28362D] text-center">
-        <p className="text-sm text-[#68625D] dark:text-[#A6A099]">
+      <div className="mt-8 pt-6 border-t border-[#EDE3DF] dark:border-[#2D2427] text-center">
+        <p className="text-sm text-[#726561] dark:text-[#9B8E91]">
           Don&apos;t have an account?{" "}
-          <Link href="/signup" className="text-[#5F7E5C] dark:text-[#86A882] font-semibold hover:underline">
+          <Link href="/signup" className="text-[#94676E] dark:text-[#BA8E94] font-semibold hover:underline">
             Create an account
           </Link>
         </p>
@@ -186,14 +186,14 @@ export default function LoginPage() {
 
       {showForgotModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#FCFAF7] dark:bg-[#19221C] rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-[#E5DDD0] dark:border-[#28362D]">
-            <h3 className="text-lg font-serif font-bold text-[#24201D] dark:text-[#F5EFE6] mb-2">Password Recovery</h3>
-            <p className="text-sm text-[#68625D] dark:text-[#A6A099] mb-4">
+          <div className="bg-[#FCFAF9] dark:bg-[#1C1719] rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-[#EDE3DF] dark:border-[#2D2427]">
+            <h3 className="text-lg font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB] mb-2">Password Recovery</h3>
+            <p className="text-sm text-[#726561] dark:text-[#9B8E91] mb-4">
               For privacy protection in this assessment environment, you can create a fresh account or contact support to reset.
             </p>
             <button
               onClick={() => setShowForgotModal(false)}
-              className="w-full py-2 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] text-white dark:text-[#0F1713] rounded-xl font-semibold text-sm transition-colors cursor-pointer"
+              className="w-full py-2 bg-[#94676E] hover:bg-[#83585F] dark:bg-[#BA8E94] dark:hover:bg-[#CBA1A7] text-white dark:text-[#181214] rounded-xl font-semibold text-sm transition-colors cursor-pointer"
             >
               Close
             </button>
