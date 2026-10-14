@@ -123,13 +123,13 @@ export default function JournalPage() {
   const getEmotionBadge = (emotion: string) => {
     const colors: Record<string, { bg: string; text: string; border: string }> = {
       joy: { bg: "bg-amber-50 dark:bg-amber-950/40", text: "text-amber-800 dark:text-amber-300", border: "border-amber-200 dark:border-amber-800/60" },
-      calm: { bg: "bg-[#D6E3D3] dark:bg-[#1D2D23]", text: "text-[#263825] dark:text-[#B4D4B0]", border: "border-[#C8D7C5] dark:border-[#2D4434]" },
+      calm: { bg: "bg-[#FAF3E8] dark:bg-[#261E14]", text: "text-[#72531F] dark:text-[#F3D39B]", border: "border-[#EBD2A4] dark:border-[#3D2C21]" },
       hopeful: { bg: "bg-emerald-50 dark:bg-emerald-950/40", text: "text-emerald-800 dark:text-emerald-300", border: "border-emerald-200 dark:border-emerald-800/60" },
       stress: { bg: "bg-orange-50 dark:bg-orange-950/40", text: "text-orange-800 dark:text-orange-300", border: "border-orange-200 dark:border-orange-800/60" },
       anxiety: { bg: "bg-purple-50 dark:bg-purple-950/40", text: "text-purple-800 dark:text-purple-300", border: "border-purple-200 dark:border-purple-800/60" },
       sadness: { bg: "bg-blue-50 dark:bg-blue-950/40", text: "text-blue-800 dark:text-blue-300", border: "border-blue-200 dark:border-blue-800/60" },
     };
-    return colors[emotion?.toLowerCase()] || { bg: "bg-[#DCE7DA] dark:bg-[#1E2822]", text: "text-[#24201D] dark:text-[#F5EFE6]", border: "border-[#C8D7C5] dark:border-[#28362D]" };
+    return colors[emotion?.toLowerCase()] || { bg: "bg-[#F7F1EE] dark:bg-[#1C1719]", text: "text-[#241F1D] dark:text-[#EFEAEB]", border: "border-[#EDE3DF] dark:border-[#2D2427]" };
   };
 
   // Filtered reflections
@@ -169,22 +169,22 @@ export default function JournalPage() {
 
         <button
           onClick={() => setIsBreathingOpen(true)}
-          className="inline-flex items-center justify-center space-x-2 bg-[#D6E3D3] hover:bg-[#C8D7C5] dark:bg-[#1D2D23] dark:hover:bg-[#2D4434] text-[#263825] dark:text-[#B4D4B0] border border-[#C8D7C5] dark:border-[#2D4434] px-4 py-2 rounded-2xl font-semibold text-xs shadow-xs transition-all cursor-pointer shrink-0"
+          className="inline-flex items-center justify-center space-x-2 bg-[#FAF3E8] hover:bg-[#F5EAD7] dark:bg-[#261E14] dark:hover:bg-[#33271A] text-[#72531F] dark:text-[#F3D39B] border border-[#EBD2A4] dark:border-[#3D2C21] px-4 py-2 rounded-2xl font-semibold text-xs shadow-xs transition-all cursor-pointer shrink-0"
         >
-          <Wind className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882]" />
+          <Wind className="w-4 h-4 text-[#B58A46] dark:text-[#C89F58]" />
           <span>60s Mindful Breath</span>
         </button>
       </header>
 
       {/* Write New Reflection Card */}
-      <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] rounded-3xl shadow-xs border border-[#C8D7C5] dark:border-[#28362D] p-6 sm:p-8 space-y-4 transition-colors backdrop-blur-xs">
+      <div className="bg-[#FFFFFF] dark:bg-[#1C1719] rounded-3xl shadow-xs border border-[#EDE3DF] dark:border-[#2D2427] p-6 sm:p-8 space-y-4 transition-colors backdrop-blur-xs">
         <div className="flex items-center justify-between">
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title / Theme of reflection (optional)..."
-            className="w-full text-lg sm:text-xl font-medium bg-transparent border-b border-transparent focus:border-[#5F7E5C] dark:focus:border-[#86A882] focus:outline-none text-[#24201D] dark:text-[#F5EFE6] placeholder-[#596557]/70 dark:placeholder-[#A6A099] pb-1 transition-colors"
+            className="w-full text-lg sm:text-xl font-medium bg-transparent border-b border-transparent focus:border-[#94676E] dark:focus:border-[#BA8E94] focus:outline-none text-[#241F1D] dark:text-[#EFEAEB] placeholder-[#726561]/70 dark:placeholder-[#9B8E91] pb-1 transition-colors"
           />
         </div>
 
@@ -193,11 +193,11 @@ export default function JournalPage() {
           onChange={(e) => setContent(e.target.value)}
           rows={5}
           placeholder="What is flowing through your mind today? Write freely in English or any Indian language/script..."
-          className="w-full resize-none outline-none bg-transparent text-[#24201D] dark:text-[#F5EFE6] placeholder-[#596557]/70 dark:placeholder-[#A6A099] leading-relaxed text-base"
+          className="w-full resize-none outline-none bg-transparent text-[#241F1D] dark:text-[#EFEAEB] placeholder-[#726561]/70 dark:placeholder-[#9B8E91] leading-relaxed text-base"
         />
 
         {/* Live Status Bar */}
-        <div className="pt-4 border-t border-[#C8D7C5]/60 dark:border-[#28362D] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#596557] dark:text-[#A6A099]">
+        <div className="pt-4 border-t border-[#EDE3DF] dark:border-[#2D2427] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#726561] dark:text-[#9B8E91]">
           <div className="flex items-center space-x-4">
             <span>{wordCount} words</span>
             <span>{content.length} characters</span>
@@ -215,7 +215,7 @@ export default function JournalPage() {
               onClick={handleSave}
               disabled={isSaving || !content.trim()}
               suppressHydrationWarning
-              className="inline-flex items-center space-x-2 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] disabled:opacity-50 disabled:cursor-not-allowed text-white dark:text-[#0F1713] px-5 py-2.5 rounded-2xl font-semibold shadow-xs transition-all text-sm cursor-pointer"
+              className="inline-flex items-center space-x-2 bg-[#94676E] hover:bg-[#83585F] dark:bg-[#BA8E94] dark:hover:bg-[#C99FA5] disabled:opacity-50 disabled:cursor-not-allowed text-white dark:text-[#150D0F] px-5 py-2.5 rounded-2xl font-semibold shadow-xs transition-all text-sm cursor-pointer"
             >
               {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
               <span>{isSaving ? "Running ML Inference..." : "Save & Analyze"}</span>
@@ -240,14 +240,14 @@ export default function JournalPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search reflections..."
-                className="pl-9 pr-3 py-2 bg-[#E4ECE2]/80 dark:bg-[#19221C] border border-[#C8D7C5] dark:border-[#28362D] rounded-xl text-xs sm:text-sm text-[#24201D] dark:text-[#F5EFE6] placeholder-[#596557]/70 dark:placeholder-[#A6A099] focus:outline-none focus:ring-1 focus:ring-[#5F7E5C]"
+                className="pl-9 pr-3 py-2 bg-[#FFFFFF] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] rounded-xl text-xs sm:text-sm text-[#241F1D] dark:text-[#EFEAEB] placeholder-[#726561]/70 dark:placeholder-[#9B8E91] focus:outline-none focus:ring-1 focus:ring-[#94676E]"
               />
             </div>
 
             <select
               value={selectedEmotion}
               onChange={(e) => setSelectedEmotion(e.target.value)}
-              className="px-3 py-2 bg-[#E4ECE2]/80 dark:bg-[#19221C] border border-[#C8D7C5] dark:border-[#28362D] rounded-xl text-xs sm:text-sm text-[#24201D] dark:text-[#F5EFE6] focus:outline-none"
+              className="px-3 py-2 bg-[#FFFFFF] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] rounded-xl text-xs sm:text-sm text-[#241F1D] dark:text-[#EFEAEB] focus:outline-none"
             >
               <option value="">All Emotions</option>
               <option value="joy">Joy</option>
@@ -261,7 +261,7 @@ export default function JournalPage() {
             <select
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="px-3 py-2 bg-[#E4ECE2]/80 dark:bg-[#19221C] border border-[#C8D7C5] dark:border-[#28362D] rounded-xl text-xs sm:text-sm text-[#24201D] dark:text-[#F5EFE6] focus:outline-none"
+              className="px-3 py-2 bg-[#FFFFFF] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] rounded-xl text-xs sm:text-sm text-[#241F1D] dark:text-[#EFEAEB] focus:outline-none"
             >
               <option value="">All Languages</option>
               <option value="English">English</option>
@@ -274,11 +274,11 @@ export default function JournalPage() {
         </div>
 
         {!entries && !error ? (
-          <div className="flex justify-center py-16 text-[#A6A099]">
+          <div className="flex justify-center py-16 text-[#9B8E91]">
             <Loader2 className="animate-spin w-8 h-8" />
           </div>
         ) : filteredEntries.length === 0 ? (
-          <div className="text-center py-12 px-4 rounded-3xl border border-dashed border-[#C8D7C5] dark:border-[#28362D] bg-[#E4ECE2]/40 dark:bg-[#19221C]/50 text-[#596557] dark:text-[#A6A099]">
+          <div className="text-center py-12 px-4 rounded-3xl border border-dashed border-[#EDE3DF] dark:border-[#2D2427] bg-[#FCFAF9] dark:bg-[#151112] text-[#726561] dark:text-[#9B8E91]">
             {searchTerm || selectedEmotion || selectedLanguage
               ? "No reflections match your current filters."
               : "No reflections written yet. Start by typing above."}
@@ -294,14 +294,14 @@ export default function JournalPage() {
               return (
                 <div
                   key={entry.id}
-                  className="bg-[#E4ECE2]/80 dark:bg-[#19221C] rounded-3xl p-6 sm:p-7 shadow-xs border border-[#C8D7C5] dark:border-[#28362D] space-y-4 transition-colors backdrop-blur-xs"
+                  className="bg-[#FFFFFF] dark:bg-[#1C1719] rounded-3xl p-6 sm:p-7 shadow-xs border border-[#EDE3DF] dark:border-[#2D2427] space-y-4 transition-colors backdrop-blur-xs"
                 >
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-semibold text-lg text-[#24201D] dark:text-[#F5EFE6]">
+                      <h3 className="font-semibold text-lg text-[#241F1D] dark:text-[#EFEAEB]">
                         {entry.title || "Personal Reflection"}
                       </h3>
-                      <p className="text-xs text-[#596557] dark:text-[#A6A099] mt-0.5" suppressHydrationWarning>
+                      <p className="text-xs text-[#726561] dark:text-[#9B8E91] mt-0.5" suppressHydrationWarning>
                         {new Date(entry.created_at).toLocaleDateString("en-US", {
                           weekday: "long",
                           month: "short",
@@ -316,14 +316,14 @@ export default function JournalPage() {
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => handleOpenEdit(entry)}
-                        className="p-2 text-[#596557] dark:text-[#A6A099] hover:text-[#5F7E5C] dark:hover:text-[#86A882] hover:bg-[#D6E3D3] dark:hover:bg-[#1E2822] rounded-lg transition-colors cursor-pointer"
+                        className="p-2 text-[#726561] dark:text-[#9B8E91] hover:text-[#94676E] dark:hover:text-[#BA8E94] hover:bg-[#FAF3E8] dark:hover:bg-[#261E14] rounded-lg transition-colors cursor-pointer"
                         title="Edit reflection"
                       >
                         <Edit3 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => handleDelete(entry.id)}
-                        className="p-2 text-[#596557] dark:text-[#A6A099] hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors cursor-pointer"
+                        className="p-2 text-[#726561] dark:text-[#9B8E91] hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors cursor-pointer"
                         title="Delete reflection"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -331,7 +331,7 @@ export default function JournalPage() {
                     </div>
                   </div>
 
-                  <p className="text-[#24201D] dark:text-[#F5EFE6] leading-relaxed whitespace-pre-wrap text-sm sm:text-base">
+                  <p className="text-[#241F1D] dark:text-[#EFEAEB] leading-relaxed whitespace-pre-wrap text-sm sm:text-base">
                     {entry.content}
                   </p>
 
@@ -353,44 +353,44 @@ export default function JournalPage() {
 
                   {/* AI Analysis Card */}
                   {entry.analysis && (
-                    <div className="bg-[#D6E3D3]/80 dark:bg-[#141C17] rounded-2xl p-4 sm:p-5 border border-[#C8D7C5] dark:border-[#28362D] space-y-3">
+                    <div className="bg-[#FAF3E8] dark:bg-[#1A1517] rounded-2xl p-4 sm:p-5 border border-[#EBD2A4] dark:border-[#332529] space-y-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
-                          <Sparkles className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882]" />
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
+                          <Sparkles className="w-4 h-4 text-[#B58A46] dark:text-[#C89F58]" />
+                          <span className="text-xs font-bold uppercase tracking-wider text-[#72531F] dark:text-[#F3D39B]">
                             Swadhyaya AI NLP Analysis
                           </span>
                         </div>
-                        <span className="text-[11px] text-[#596557] dark:text-[#A6A099] font-mono">
+                        <span className="text-[11px] text-[#726561] dark:text-[#9B8E91] font-mono">
                           {entry.analysis.model_version}
                         </span>
                       </div>
 
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
-                        <div className="bg-[#E4ECE2] dark:bg-[#19221C] p-3 rounded-xl border border-[#C8D7C5] dark:border-[#28362D]">
-                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">Primary Emotion</p>
-                          <p className="font-semibold text-sm capitalize mt-0.5 text-[#5F7E5C] dark:text-[#86A882]">
+                        <div className="bg-[#FFFFFF] dark:bg-[#20181B] p-3 rounded-xl border border-[#EDE3DF] dark:border-[#332529]">
+                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">Primary Emotion</p>
+                          <p className="font-semibold text-sm capitalize mt-0.5 text-[#94676E] dark:text-[#BA8E94]">
                             {entry.analysis.primary_emotion}
                           </p>
                         </div>
 
-                        <div className="bg-[#E4ECE2] dark:bg-[#19221C] p-3 rounded-xl border border-[#C8D7C5] dark:border-[#28362D]">
-                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">Sentiment & Score</p>
-                          <p className="font-semibold text-sm capitalize mt-0.5 text-[#24201D] dark:text-[#F5EFE6]">
+                        <div className="bg-[#FFFFFF] dark:bg-[#20181B] p-3 rounded-xl border border-[#EDE3DF] dark:border-[#332529]">
+                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">Sentiment & Score</p>
+                          <p className="font-semibold text-sm capitalize mt-0.5 text-[#241F1D] dark:text-[#EFEAEB]">
                             {entry.analysis.sentiment} ({entry.analysis.emotion_score > 0 ? `+${entry.analysis.emotion_score.toFixed(2)}` : entry.analysis.emotion_score.toFixed(2)})
                           </p>
                         </div>
 
-                        <div className="bg-[#E4ECE2] dark:bg-[#19221C] p-3 rounded-xl border border-[#C8D7C5] dark:border-[#28362D]">
-                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">Model Confidence</p>
-                          <p className="font-semibold text-sm mt-0.5 text-[#24201D] dark:text-[#F5EFE6]">
+                        <div className="bg-[#FFFFFF] dark:bg-[#20181B] p-3 rounded-xl border border-[#EDE3DF] dark:border-[#332529]">
+                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">Model Confidence</p>
+                          <p className="font-semibold text-sm mt-0.5 text-[#241F1D] dark:text-[#EFEAEB]">
                             {Math.round(entry.analysis.confidence * 100)}%
                           </p>
                         </div>
 
-                        <div className="bg-[#E4ECE2] dark:bg-[#19221C] p-3 rounded-xl border border-[#C8D7C5] dark:border-[#28362D]">
-                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">Languages</p>
-                          <p className="font-semibold text-xs mt-0.5 text-[#24201D] dark:text-[#F5EFE6] truncate" title={parsedLangs.join(", ")}>
+                        <div className="bg-[#FFFFFF] dark:bg-[#20181B] p-3 rounded-xl border border-[#EDE3DF] dark:border-[#332529]">
+                          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">Languages</p>
+                          <p className="font-semibold text-xs mt-0.5 text-[#241F1D] dark:text-[#EFEAEB] truncate" title={parsedLangs.join(", ")}>
                             {parsedLangs.join(", ")}
                           </p>
                         </div>
@@ -407,14 +407,14 @@ export default function JournalPage() {
       {/* Edit Entry Modal */}
       {editingEntry && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#E4ECE2] dark:bg-[#19221C] rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-[#C8D7C5] dark:border-[#28362D] space-y-4">
+          <div className="bg-[#FCFAF9] dark:bg-[#1C1719] rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-[#EDE3DF] dark:border-[#2D2427] space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-xl font-serif font-bold text-[#24201D] dark:text-[#F5EFE6]">
+              <h3 className="text-xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB]">
                 Edit Reflection
               </h3>
               <button
                 onClick={() => setEditingEntry(null)}
-                className="p-1.5 text-[#596557] hover:text-[#24201D] dark:text-[#A6A099] dark:hover:text-[#F5EFE6] rounded-lg cursor-pointer"
+                className="p-1.5 text-[#726561] hover:text-[#241F1D] dark:text-[#9B8E91] dark:hover:text-[#EFEAEB] rounded-lg cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -425,27 +425,27 @@ export default function JournalPage() {
               value={editTitle}
               onChange={(e) => setEditTitle(e.target.value)}
               placeholder="Title..."
-              className="w-full text-base font-medium p-3 bg-[#D6E3D3]/80 dark:bg-[#141C17] rounded-xl border border-[#C8D7C5] dark:border-[#28362D] text-[#24201D] dark:text-[#F5EFE6] focus:outline-none"
+              className="w-full text-base font-medium p-3 bg-[#F7F1EE] dark:bg-[#151112] rounded-xl border border-[#EDE3DF] dark:border-[#2D2427] text-[#241F1D] dark:text-[#EFEAEB] focus:outline-none"
             />
 
             <textarea
               value={editContent}
               onChange={(e) => setEditContent(e.target.value)}
               rows={6}
-              className="w-full text-sm leading-relaxed p-3 bg-[#D6E3D3]/80 dark:bg-[#141C17] rounded-xl border border-[#C8D7C5] dark:border-[#28362D] text-[#24201D] dark:text-[#F5EFE6] focus:outline-none resize-none"
+              className="w-full text-sm leading-relaxed p-3 bg-[#F7F1EE] dark:bg-[#151112] rounded-xl border border-[#EDE3DF] dark:border-[#2D2427] text-[#241F1D] dark:text-[#EFEAEB] focus:outline-none resize-none"
             />
 
             <div className="flex justify-end space-x-3 pt-2">
               <button
                 onClick={() => setEditingEntry(null)}
-                className="px-4 py-2 text-sm font-semibold text-[#596557] dark:text-[#A6A099] hover:bg-[#D6E3D3] dark:hover:bg-[#1E2822] rounded-xl cursor-pointer"
+                className="px-4 py-2 text-sm font-semibold text-[#726561] dark:text-[#9B8E91] hover:bg-[#FAF3E8] dark:hover:bg-[#261E14] rounded-xl cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveEdit}
                 disabled={isUpdating || !editContent.trim()}
-                className="px-5 py-2 text-sm font-semibold text-white dark:text-[#0F1713] bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] rounded-xl flex items-center space-x-2 disabled:opacity-50 cursor-pointer shadow-xs"
+                className="px-5 py-2 text-sm font-semibold text-white dark:text-[#150D0F] bg-[#94676E] hover:bg-[#83585F] dark:bg-[#BA8E94] dark:hover:bg-[#C99FA5] rounded-xl flex items-center space-x-2 disabled:opacity-50 cursor-pointer shadow-xs"
               >
                 {isUpdating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                 <span>{isUpdating ? "Re-analyzing..." : "Save Changes"}</span>

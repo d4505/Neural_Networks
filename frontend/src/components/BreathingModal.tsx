@@ -186,42 +186,42 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
   // Visual circle scale & text instruction
   let instruction = "Prepare to begin";
   let circleScale = "scale-90 opacity-70";
-  let ringColor = "border-[#C8D7C5] dark:border-[#28362D]";
-  let glowColor = "bg-[#D6E3D3]/40 dark:bg-[#1D2D23]/50";
+  let ringColor = "border-[#EDE3DF] dark:border-[#2D2427]";
+  let glowColor = "bg-[#FAF3E8]/40 dark:bg-[#261E14]/50";
 
   if (phase === "inhale") {
     instruction = "Breathe In Slowly";
     circleScale = "scale-125 opacity-100";
-    ringColor = "border-[#5F7E5C] dark:border-[#86A882]";
-    glowColor = "bg-[#B4D4B0]/60 dark:bg-[#2D4434]/80 shadow-[0_0_50px_rgba(95,126,92,0.3)]";
+    ringColor = "border-[#94676E] dark:border-[#BA8E94]";
+    glowColor = "bg-[#FAF0ED]/60 dark:bg-[#2A1D20]/80 shadow-[0_0_50px_rgba(148,103,110,0.3)]";
   } else if (phase === "hold1" || phase === "hold2") {
     instruction = "Hold & Be Still";
     circleScale = "scale-125 opacity-90";
-    ringColor = "border-amber-400/80 dark:border-amber-500/80";
-    glowColor = "bg-amber-100/50 dark:bg-amber-950/40 shadow-[0_0_40px_rgba(251,191,36,0.2)]";
+    ringColor = "border-[#B58A46]/80 dark:border-[#C89F58]/80";
+    glowColor = "bg-amber-100/50 dark:bg-amber-950/40 shadow-[0_0_40px_rgba(181,138,70,0.2)]";
   } else if (phase === "exhale") {
     instruction = "Release & Let Go";
     circleScale = "scale-75 opacity-60";
-    ringColor = "border-[#5F7E5C]/70 dark:border-[#86A882]/70";
-    glowColor = "bg-[#E4ECE2]/80 dark:bg-[#141C17]/90";
+    ringColor = "border-[#94676E]/60 dark:border-[#BA8E94]/60";
+    glowColor = "bg-[#FCFAF9]/80 dark:bg-[#131112]/90";
   } else if (phase === "complete") {
     instruction = "Mindful Pause Complete";
   }
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="bg-[#FAF8F5] dark:bg-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="bg-[#FCFAF9] dark:bg-[#151112] border border-[#EDE3DF] dark:border-[#2D2427] rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#C8D7C5] dark:border-[#28362D] bg-[#E8EFE6]/60 dark:bg-[#19221C]/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#EDE3DF] dark:border-[#2D2427] bg-[#F7F1EE]/70 dark:bg-[#1A1517]/70">
           <div className="flex items-center space-x-2.5">
-            <div className="p-2 rounded-xl bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#5F7E5C] dark:text-[#86A882]">
+            <div className="p-2 rounded-xl bg-[#FAF3E8] dark:bg-[#261E14] text-[#B58A46] dark:text-[#C89F58] border border-[#EBD2A4] dark:border-[#3D2C21]">
               <Wind className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="font-serif font-bold text-lg text-[#24201D] dark:text-[#F5EFE6]">
+              <h2 className="font-serif font-bold text-lg text-[#241F1D] dark:text-[#EFEAEB]">
                 Mindful Breathing Space
               </h2>
-              <p className="text-[11px] text-[#596557] dark:text-[#A6A099]">
+              <p className="text-[11px] text-[#726561] dark:text-[#9B8E91]">
                 Ground your nervous system in 60 seconds
               </p>
             </div>
@@ -230,13 +230,13 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
             <button
               onClick={() => setSoundEnabled(!soundEnabled)}
               title={soundEnabled ? "Mute audio tones" : "Enable calming tones"}
-              className="p-2 rounded-xl text-[#596557] dark:text-[#A6A099] hover:bg-[#D6E3D3] dark:hover:bg-[#1D2D23] transition-colors"
+              className="p-2 rounded-xl text-[#726561] dark:text-[#9B8E91] hover:bg-[#FAF3E8] dark:hover:bg-[#261E14] transition-colors"
             >
-              {soundEnabled ? <Volume2 className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882]" /> : <VolumeX className="w-4 h-4" />}
+              {soundEnabled ? <Volume2 className="w-4 h-4 text-[#B58A46] dark:text-[#C89F58]" /> : <VolumeX className="w-4 h-4" />}
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-[#596557] dark:text-[#A6A099] hover:bg-[#D6E3D3] dark:hover:bg-[#1D2D23] transition-colors"
+              className="p-2 rounded-xl text-[#726561] dark:text-[#9B8E91] hover:bg-[#FAF3E8] dark:hover:bg-[#261E14] transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -258,8 +258,8 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
                   className={clsx(
                     "px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border",
                     isSelected
-                      ? "bg-[#5F7E5C] dark:bg-[#86A882] text-white dark:text-[#0F1713] border-transparent shadow-xs"
-                      : "bg-[#E4ECE2] dark:bg-[#19221C] text-[#596557] dark:text-[#A6A099] border-[#C8D7C5] dark:border-[#28362D] hover:bg-[#D6E3D3] dark:hover:bg-[#1E2822]",
+                      ? "bg-[#94676E] dark:bg-[#BA8E94] text-white dark:text-[#150D0F] border-transparent shadow-xs"
+                      : "bg-[#F7F1EE] dark:bg-[#1C1719] text-[#726561] dark:text-[#9B8E91] border-[#EDE3DF] dark:border-[#2D2427] hover:bg-[#FAF3E8] dark:hover:bg-[#261E14]",
                     isActive && "opacity-50 cursor-not-allowed"
                   )}
                 >
@@ -291,15 +291,15 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
             >
               {phase === "complete" ? (
                 <div className="space-y-1 animate-in zoom-in-50 duration-300">
-                  <CheckCircle2 className="w-10 h-10 text-[#5F7E5C] dark:text-[#86A882] mx-auto" />
-                  <p className="font-serif font-bold text-sm text-[#24201D] dark:text-[#F5EFE6]">Centered</p>
+                  <CheckCircle2 className="w-10 h-10 text-[#B58A46] dark:text-[#C89F58] mx-auto" />
+                  <p className="font-serif font-bold text-sm text-[#241F1D] dark:text-[#EFEAEB]">Centered</p>
                 </div>
               ) : (
                 <>
-                  <span className="text-4xl font-serif font-bold text-[#24201D] dark:text-[#F5EFE6] tracking-tight">
+                  <span className="text-4xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB] tracking-tight">
                     {isActive ? countdown : "✦"}
                   </span>
-                  <p className="text-xs font-semibold text-[#596557] dark:text-[#A6A099] mt-1 uppercase tracking-wider">
+                  <p className="text-xs font-semibold text-[#726561] dark:text-[#9B8E91] mt-1 uppercase tracking-wider">
                     {phase === "ready" ? "Ready" : phase}
                   </p>
                 </>
@@ -309,10 +309,10 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
 
           {/* Dynamic Guidance Instructions */}
           <div className="text-center space-y-1">
-            <p className="font-serif font-semibold text-xl text-[#24201D] dark:text-[#F5EFE6]">
+            <p className="font-serif font-semibold text-xl text-[#241F1D] dark:text-[#EFEAEB]">
               {instruction}
             </p>
-            <p className="text-xs text-[#596557] dark:text-[#A6A099] max-w-sm">
+            <p className="text-xs text-[#726561] dark:text-[#9B8E91] max-w-sm">
               {phase === "complete"
                 ? "Your breathing is centered. Take this calm clarity into your next reflection."
                 : TECHNIQUES[technique].description}
@@ -321,13 +321,13 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
 
           {/* Cycles & Progress Bar */}
           <div className="w-full max-w-xs space-y-2">
-            <div className="flex justify-between text-xs text-[#596557] dark:text-[#A6A099] font-medium">
+            <div className="flex justify-between text-xs text-[#726561] dark:text-[#9B8E91] font-medium">
               <span>Cycles completed</span>
               <span>{completedCycles} / {targetCycles}</span>
             </div>
-            <div className="w-full h-2 bg-[#D6E3D3] dark:bg-[#1D2D23] rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-[#EDE3DF] dark:bg-[#251C1F] rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#5F7E5C] dark:bg-[#86A882] transition-all duration-500 rounded-full"
+                className="h-full bg-gradient-to-r from-[#94676E] to-[#B58A46] dark:from-[#BA8E94] dark:to-[#C89F58] transition-all duration-500 rounded-full"
                 style={{ width: `${Math.min(100, (completedCycles / targetCycles) * 100)}%` }}
               />
             </div>
@@ -338,7 +338,7 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
             {!isActive ? (
               <button
                 onClick={handleStart}
-                className="inline-flex items-center space-x-2 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] text-white dark:text-[#0F1713] px-6 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
+                className="inline-flex items-center space-x-2 bg-[#94676E] hover:bg-[#83585F] dark:bg-[#BA8E94] dark:hover:bg-[#C99FA5] text-white dark:text-[#150D0F] px-6 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
               >
                 <Play className="w-4 h-4 fill-current" />
                 <span>{phase === "complete" ? "Begin Again" : phase === "ready" ? "Start Session" : "Resume"}</span>
@@ -346,7 +346,7 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
             ) : (
               <button
                 onClick={handlePause}
-                className="inline-flex items-center space-x-2 bg-[#E4ECE2] hover:bg-[#D6E3D3] dark:bg-[#1D2D23] dark:hover:bg-[#28362D] text-[#24201D] dark:text-[#F5EFE6] border border-[#C8D7C5] dark:border-[#28362D] px-6 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
+                className="inline-flex items-center space-x-2 bg-[#F7F1EE] hover:bg-[#FAF3E8] dark:bg-[#1C1719] dark:hover:bg-[#261E14] text-[#241F1D] dark:text-[#EFEAEB] border border-[#EDE3DF] dark:border-[#2D2427] px-6 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
               >
                 <Pause className="w-4 h-4" />
                 <span>Pause</span>
@@ -356,7 +356,7 @@ export function BreathingModal({ isOpen, onClose }: BreathingModalProps) {
             <button
               onClick={handleReset}
               title="Reset Session"
-              className="p-2.5 rounded-2xl bg-[#E4ECE2] dark:bg-[#19221C] text-[#596557] dark:text-[#A6A099] border border-[#C8D7C5] dark:border-[#28362D] hover:bg-[#D6E3D3] transition-colors"
+              className="p-2.5 rounded-2xl bg-[#F7F1EE] dark:bg-[#1C1719] text-[#726561] dark:text-[#9B8E91] border border-[#EDE3DF] dark:border-[#2D2427] hover:bg-[#FAF3E8] transition-colors"
             >
               <RotateCcw className="w-4 h-4" />
             </button>

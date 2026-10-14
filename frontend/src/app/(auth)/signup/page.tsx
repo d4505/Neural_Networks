@@ -120,7 +120,7 @@ export default function SignupPage() {
   return (
     <div className="w-full max-w-lg bg-[#FCFAF7] dark:bg-[#19221C] p-7 sm:p-9 rounded-3xl shadow-xl border border-[#E5DDD0] dark:border-[#28362D] my-8 transition-colors">
       <div className="text-center mb-6">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#D6E3D3] to-[#E4ECE2] dark:from-[#1D2D23] dark:to-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] p-2.5 shadow-xs mb-3">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#FAF3E8] to-[#F7F1EE] dark:from-[#261E14] dark:to-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] p-2.5 shadow-xs mb-3">
           <AntaraLogoIcon size={44} />
         </div>
         <h1 className="text-2xl font-serif font-semibold text-[#24201D] dark:text-[#F5EFE6] tracking-tight">
@@ -152,7 +152,7 @@ export default function SignupPage() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Your name"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#F4EFE6]/70 dark:bg-[#141C17] border border-[#E5DDD0] dark:border-[#28362D] rounded-xl text-[#24201D] dark:text-[#F5EFE6] placeholder-[#A6A099] focus:outline-none focus:ring-2 focus:ring-[#5F7E5C] transition-all text-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#F4EFE6]/70 dark:bg-[#141C17] border border-[#E5DDD0] dark:border-[#28362D] rounded-xl text-[#24201D] dark:text-[#F5EFE6] placeholder-[#A6A099] focus:outline-none focus:ring-2 focus:ring-[#94676E] transition-all text-sm"
             />
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function SignupPage() {
                   ? "border-rose-400 focus:ring-2 focus:ring-rose-400 dark:border-rose-700"
                   : emailTouched && isEmailValid
                   ? "border-emerald-500 focus:ring-2 focus:ring-emerald-500 dark:border-emerald-600"
-                  : "border-[#E5DDD0] dark:border-[#28362D] focus:ring-2 focus:ring-[#5F7E5C]"
+                  : "border-[#E5DDD0] dark:border-[#28362D] focus:ring-2 focus:ring-[#94676E]"
               }`}
             />
             {emailTouched && isEmailValid && (
@@ -232,7 +232,7 @@ export default function SignupPage() {
               className={`w-full pl-10 pr-10 py-2.5 bg-[#F4EFE6]/70 dark:bg-[#141C17] border rounded-xl text-[#24201D] dark:text-[#F5EFE6] placeholder-[#A6A099] focus:outline-none transition-all text-sm ${
                 password && isPasswordSecure
                   ? "border-emerald-500 focus:ring-2 focus:ring-emerald-500 dark:border-emerald-600"
-                  : "border-[#E5DDD0] dark:border-[#28362D] focus:ring-2 focus:ring-[#5F7E5C]"
+                  : "border-[#E5DDD0] dark:border-[#28362D] focus:ring-2 focus:ring-[#94676E]"
               }`}
             />
             <button
@@ -351,7 +351,7 @@ export default function SignupPage() {
                   ? "border-emerald-500 focus:ring-2 focus:ring-emerald-500 dark:border-emerald-600"
                   : passwordConfirmation && !passwordsMatch
                   ? "border-rose-400 focus:ring-2 focus:ring-rose-400 dark:border-rose-700"
-                  : "border-[#E5DDD0] dark:border-[#28362D] focus:ring-2 focus:ring-[#5F7E5C]"
+                  : "border-[#E5DDD0] dark:border-[#28362D] focus:ring-2 focus:ring-[#94676E]"
               }`}
             />
             <button
@@ -385,7 +385,7 @@ export default function SignupPage() {
               type="checkbox"
               checked={consent}
               onChange={(e) => setConsent(e.target.checked)}
-              className="mt-0.5 rounded border-[#E5DDD0] text-[#5F7E5C] focus:ring-[#5F7E5C]"
+              className="mt-0.5 rounded border-[#EDE3DF] text-[#94676E] focus:ring-[#94676E]"
             />
             <span>
               (Optional) I consent to anonymously contribute de-identified journal entries to help improve Swadhyaya&apos;s multilingual emotional understanding models.
@@ -396,17 +396,17 @@ export default function SignupPage() {
         <button
           type="submit"
           disabled={loading || !isFormValid}
-          className="w-full py-3 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] text-white dark:text-[#0F1713] rounded-2xl font-semibold shadow-xs transition-all flex items-center justify-center space-x-2 disabled:opacity-50 mt-2 cursor-pointer"
+          className="w-full py-3 bg-[#94676E] hover:bg-[#83585F] dark:bg-[#BA8E94] dark:hover:bg-[#C99FA5] text-white dark:text-[#150D0F] rounded-2xl font-semibold shadow-xs transition-all flex items-center justify-center space-x-2 disabled:opacity-50 mt-2 cursor-pointer"
         >
           {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
           <span>{loading ? "Creating Account..." : "Create Free Account"}</span>
         </button>
       </form>
 
-      <div className="mt-6 pt-5 border-t border-[#E5DDD0] dark:border-[#28362D] text-center">
-        <p className="text-sm text-[#68625D] dark:text-[#A6A099]">
+      <div className="mt-6 pt-5 border-t border-[#EDE3DF] dark:border-[#2D2427] text-center">
+        <p className="text-sm text-[#726561] dark:text-[#9B8E91]">
           Already have an account?{" "}
-          <Link href="/login" className="text-[#5F7E5C] dark:text-[#86A882] font-semibold hover:underline">
+          <Link href="/login" className="text-[#94676E] dark:text-[#BA8E94] font-semibold hover:underline">
             Sign In
           </Link>
         </p>

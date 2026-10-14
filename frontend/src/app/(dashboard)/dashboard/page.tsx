@@ -53,15 +53,15 @@ export default function DashboardPage() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setIsBreathingOpen(true)}
-            className="inline-flex items-center justify-center space-x-2 bg-[#D6E3D3] hover:bg-[#C8D7C5] dark:bg-[#1D2D23] dark:hover:bg-[#2D4434] text-[#263825] dark:text-[#B4D4B0] border border-[#C8D7C5] dark:border-[#2D4434] px-4 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
+            className="inline-flex items-center justify-center space-x-2 bg-[#FAF3E8] hover:bg-[#F5EAD7] dark:bg-[#261E14] dark:hover:bg-[#33271A] text-[#72531F] dark:text-[#F3D39B] border border-[#EBD2A4] dark:border-[#3D2C21] px-4 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
           >
-            <Wind className="w-4 h-4 text-[#5F7E5C] dark:text-[#86A882]" />
+            <Wind className="w-4 h-4 text-[#B58A46] dark:text-[#C89F58]" />
             <span>60s Breath</span>
           </button>
 
           <Link
             href="/journal"
-            className="inline-flex items-center justify-center space-x-2 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] text-white dark:text-[#0F1713] px-5 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
+            className="inline-flex items-center justify-center space-x-2 bg-[#94676E] hover:bg-[#83585F] dark:bg-[#BA8E94] dark:hover:bg-[#C99FA5] text-white dark:text-[#150D0F] px-5 py-2.5 rounded-2xl font-semibold shadow-xs transition-all cursor-pointer"
           >
             <PlusCircle className="w-5 h-5" />
             <span>Write New Reflection</span>
@@ -74,19 +74,19 @@ export default function DashboardPage() {
 
       {/* Gentle Wellbeing Nudge Banner (Section 17 requirement) */}
       {showNudge && (
-        <div className="p-5 rounded-3xl bg-[#D6E3D3]/90 dark:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] shadow-xs flex items-start space-x-4">
-          <div className="p-2.5 rounded-2xl bg-[#E4ECE2] dark:bg-[#141C17] text-[#5F7E5C] dark:text-[#86A882] shrink-0 shadow-xs">
+        <div className="p-5 rounded-3xl bg-[#FAF3E8] dark:bg-[#261E14] border border-[#EBD2A4] dark:border-[#3D2C21] shadow-xs flex items-start space-x-4">
+          <div className="p-2.5 rounded-2xl bg-[#FCFAF9] dark:bg-[#151112] text-[#B58A46] dark:text-[#C89F58] shrink-0 shadow-xs border border-[#EDE3DF] dark:border-[#2D2427]">
             <HeartHandshake className="w-6 h-6" />
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold text-[#24201D] dark:text-[#F5EFE6] text-sm sm:text-base">
+            <h3 className="font-semibold text-[#241F1D] dark:text-[#EFEAEB] text-sm sm:text-base">
               A Gentle Check-in from Swadhyaya
             </h3>
-            <p className="text-[#596557] dark:text-[#A6A099] text-sm mt-1 leading-relaxed">
+            <p className="text-[#726561] dark:text-[#9B8E91] text-sm mt-1 leading-relaxed">
               {trajectoryData?.nudge_message ||
                 "We noticed your reflections have felt progressively heavier over the past week. Remember to be gentle with yourself today. Taking a short walk, speaking with someone you trust, or resting can make a difference."}
             </p>
-            <p className="text-xs text-[#596557]/80 dark:text-[#A6A099] mt-2">
+            <p className="text-xs text-[#726561]/80 dark:text-[#9B8E91] mt-2">
               Non-clinical observation derived from journal emotional trends.
             </p>
           </div>
@@ -99,20 +99,20 @@ export default function DashboardPage() {
         </div>
       ) : !hasEntries ? (
         /* Honest Empty State (Section 10 requirement) */
-        <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] border border-dashed border-[#C8D7C5] dark:border-[#28362D] rounded-3xl p-12 text-center max-w-xl mx-auto space-y-4 shadow-xs backdrop-blur-xs">
-          <div className="w-16 h-16 bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#5F7E5C] dark:text-[#86A882] rounded-2xl mx-auto flex items-center justify-center">
+        <div className="bg-[#FFFFFF] dark:bg-[#1C1719] border border-dashed border-[#EDE3DF] dark:border-[#2D2427] rounded-3xl p-12 text-center max-w-xl mx-auto space-y-4 shadow-xs backdrop-blur-xs">
+          <div className="w-16 h-16 bg-[#FAF3E8] dark:bg-[#261E14] text-[#B58A46] dark:text-[#C89F58] rounded-2xl mx-auto flex items-center justify-center border border-[#EDE3DF] dark:border-[#3D2C21]">
             <BookOpen className="w-8 h-8" />
           </div>
-          <h2 className="text-xl font-serif font-semibold text-[#24201D] dark:text-[#F5EFE6]">
+          <h2 className="text-xl font-serif font-semibold text-[#241F1D] dark:text-[#EFEAEB]">
             Your reflection space is ready
           </h2>
-          <p className="text-[#596557] dark:text-[#A6A099] text-sm leading-relaxed">
+          <p className="text-[#726561] dark:text-[#9B8E91] text-sm leading-relaxed">
             Swadhyaya analyzes your authentic thoughts across English, Hindi, Tamil, Malayalam, and Telugu without fabricated data. Write your first reflection to begin your journey.
           </p>
           <div className="pt-2">
             <Link
               href="/journal"
-              className="inline-flex items-center space-x-2 bg-[#5F7E5C] hover:bg-[#4D674A] dark:bg-[#86A882] dark:hover:bg-[#96B892] text-white dark:text-[#0F1713] px-5 py-2.5 rounded-2xl font-semibold text-sm transition-all shadow-xs"
+              className="inline-flex items-center space-x-2 bg-[#94676E] hover:bg-[#83585F] dark:bg-[#BA8E94] dark:hover:bg-[#C99FA5] text-white dark:text-[#150D0F] px-5 py-2.5 rounded-2xl font-semibold text-sm transition-all shadow-xs"
             >
               <PlusCircle className="w-4 h-4" />
               <span>Write First Entry</span>
@@ -124,9 +124,9 @@ export default function DashboardPage() {
           {/* Top Metric Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Latest State */}
-            <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] p-6 rounded-3xl shadow-xs border border-[#C8D7C5] dark:border-[#28362D] flex flex-col justify-between transition-colors backdrop-blur-xs">
+            <div className="bg-[#FFFFFF] dark:bg-[#1C1719] p-6 rounded-3xl shadow-xs border border-[#EDE3DF] dark:border-[#2D2427] flex flex-col justify-between transition-colors backdrop-blur-xs">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">
                   Latest Emotional State
                 </span>
                 {latestEntry?.analysis ? (
@@ -141,61 +141,61 @@ export default function DashboardPage() {
                       {latestEntry.analysis.primary_emotion.charAt(0).toUpperCase()}
                     </div>
                     <div>
-                      <p className="font-semibold text-xl capitalize text-[#24201D] dark:text-[#F5EFE6]">
+                      <p className="font-semibold text-xl capitalize text-[#241F1D] dark:text-[#EFEAEB]">
                         {latestEntry.analysis.primary_emotion}
                       </p>
-                      <p className="text-xs text-[#596557] dark:text-[#A6A099] capitalize">
+                      <p className="text-xs text-[#726561] dark:text-[#9B8E91] capitalize">
                         Sentiment: {latestEntry.analysis.sentiment} ({latestEntry.analysis.emotion_score > 0 ? `+${latestEntry.analysis.emotion_score.toFixed(2)}` : latestEntry.analysis.emotion_score.toFixed(2)})
                       </p>
                     </div>
                   </div>
                 ) : (
-                  <p className="text-[#A6A099] text-sm mt-3">No analysis available</p>
+                  <p className="text-[#9B8E91] text-sm mt-3">No analysis available</p>
                 )}
               </div>
-              <div className="mt-4 pt-3 border-t border-[#C8D7C5]/60 dark:border-[#28362D] text-xs text-[#596557] dark:text-[#A6A099] flex justify-between">
+              <div className="mt-4 pt-3 border-t border-[#EDE3DF] dark:border-[#2D2427] text-xs text-[#726561] dark:text-[#9B8E91] flex justify-between">
                 <span>Confidence: {latestEntry?.analysis?.confidence ? `${Math.round(latestEntry.analysis.confidence * 100)}%` : "N/A"}</span>
                 <span>Language: {latestEntry?.analysis?.languages_detected ? JSON.parse(latestEntry.analysis.languages_detected)[0] : "English"}</span>
               </div>
             </div>
 
             {/* Total Reflections */}
-            <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] p-6 rounded-3xl shadow-xs border border-[#C8D7C5] dark:border-[#28362D] flex flex-col justify-between transition-colors backdrop-blur-xs">
+            <div className="bg-[#FFFFFF] dark:bg-[#1C1719] p-6 rounded-3xl shadow-xs border border-[#EDE3DF] dark:border-[#2D2427] flex flex-col justify-between transition-colors backdrop-blur-xs">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">
                   Journal Reflections
                 </span>
                 <div className="mt-4 flex items-baseline space-x-2">
-                  <span className="text-4xl font-bold text-[#24201D] dark:text-[#F5EFE6]">
+                  <span className="text-4xl font-bold text-[#241F1D] dark:text-[#EFEAEB]">
                     {entries.length}
                   </span>
-                  <span className="text-[#596557] dark:text-[#A6A099] text-sm">entries recorded</span>
+                  <span className="text-[#726561] dark:text-[#9B8E91] text-sm">entries recorded</span>
                 </div>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#C8D7C5]/60 dark:border-[#28362D] text-xs text-[#596557] dark:text-[#A6A099] flex items-center justify-between">
+              <div className="mt-4 pt-3 border-t border-[#EDE3DF] dark:border-[#2D2427] text-xs text-[#726561] dark:text-[#9B8E91] flex items-center justify-between">
                 <span>Pattern: {trajectoryData?.observed_pattern || "Steady"}</span>
-                <Link href="/insights" className="text-[#5F7E5C] dark:text-[#86A882] font-semibold hover:underline inline-flex items-center gap-1">
+                <Link href="/insights" className="text-[#94676E] dark:text-[#BA8E94] font-semibold hover:underline inline-flex items-center gap-1">
                   View Insights <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
             </div>
 
             {/* Weekly Overview */}
-            <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] p-6 rounded-3xl shadow-xs border border-[#C8D7C5] dark:border-[#28362D] flex flex-col justify-between transition-colors backdrop-blur-xs">
+            <div className="bg-[#FFFFFF] dark:bg-[#1C1719] p-6 rounded-3xl shadow-xs border border-[#EDE3DF] dark:border-[#2D2427] flex flex-col justify-between transition-colors backdrop-blur-xs">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">
                   Weekly Trajectory
                 </span>
-                <p className="text-sm text-[#24201D] dark:text-[#F5EFE6] mt-3 line-clamp-3 leading-relaxed">
+                <p className="text-sm text-[#241F1D] dark:text-[#EFEAEB] mt-3 line-clamp-3 leading-relaxed">
                   {trajectoryData?.nudge_message ||
                     (trajectoryData?.observed_pattern === "Gradually Improving"
                       ? "Your reflections show encouraging upward emotional momentum over the past week."
                       : "Your reflections show a grounded and reflective rhythm this week.")}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#C8D7C5]/60 dark:border-[#28362D] text-xs text-[#596557] dark:text-[#A6A099] flex justify-between">
+              <div className="mt-4 pt-3 border-t border-[#EDE3DF] dark:border-[#2D2427] text-xs text-[#726561] dark:text-[#9B8E91] flex justify-between">
                 <span>Avg Valence: {trajectoryData?.average_score !== undefined ? (trajectoryData.average_score > 0 ? `+${trajectoryData.average_score}` : trajectoryData.average_score) : "0.0"}</span>
-                <Link href="/calendar" className="text-[#5F7E5C] dark:text-[#86A882] font-semibold hover:underline inline-flex items-center gap-1">
+                <Link href="/calendar" className="text-[#94676E] dark:text-[#BA8E94] font-semibold hover:underline inline-flex items-center gap-1">
                   Calendar <CalendarIcon className="w-3 h-3" />
                 </Link>
               </div>
@@ -203,12 +203,12 @@ export default function DashboardPage() {
           </div>
 
           {/* Latest Entry Card */}
-          <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] p-7 rounded-3xl shadow-xs border border-[#C8D7C5] dark:border-[#28362D] space-y-4 transition-colors backdrop-blur-xs">
+          <div className="bg-[#FFFFFF] dark:bg-[#1C1719] p-7 rounded-3xl shadow-xs border border-[#EDE3DF] dark:border-[#2D2427] space-y-4 transition-colors backdrop-blur-xs">
             <div className="flex justify-between items-center">
-              <h2 className="text-base font-bold uppercase tracking-wider text-[#596557] dark:text-[#A6A099]">
+              <h2 className="text-base font-bold uppercase tracking-wider text-[#726561] dark:text-[#9B8E91]">
                 Most Recent Reflection
               </h2>
-              <span className="text-xs text-[#596557] dark:text-[#A6A099]" suppressHydrationWarning>
+              <span className="text-xs text-[#726561] dark:text-[#9B8E91]" suppressHydrationWarning>
                 {new Date(latestEntry.created_at).toLocaleDateString("en-US", {
                   weekday: "short",
                   month: "short",
@@ -219,26 +219,26 @@ export default function DashboardPage() {
               </span>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#D6E3D3]/80 dark:bg-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] space-y-4">
-              <h3 className="font-semibold text-lg text-[#24201D] dark:text-[#F5EFE6]">
+            <div className="p-6 rounded-2xl bg-[#F7F1EE] dark:bg-[#151112] border border-[#EDE3DF] dark:border-[#2D2427] space-y-4">
+              <h3 className="font-semibold text-lg text-[#241F1D] dark:text-[#EFEAEB]">
                 {latestEntry.title || "Personal Reflection"}
               </h3>
-              <p className="text-[#24201D] dark:text-[#F5EFE6] leading-relaxed whitespace-pre-wrap text-sm sm:text-base">
+              <p className="text-[#241F1D] dark:text-[#EFEAEB] leading-relaxed whitespace-pre-wrap text-sm sm:text-base">
                 &ldquo;{latestEntry.content}&rdquo;
               </p>
 
               {latestEntry.analysis && (
-                <div className="pt-4 border-t border-[#C8D7C5] dark:border-[#28362D] flex flex-wrap gap-2 items-center">
+                <div className="pt-4 border-t border-[#EDE3DF] dark:border-[#2D2427] flex flex-wrap gap-2 items-center">
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getEmotionBadge(latestEntry.analysis.primary_emotion).bg} ${getEmotionBadge(latestEntry.analysis.primary_emotion).text} ${getEmotionBadge(latestEntry.analysis.primary_emotion).border}`}>
                     Primary: {latestEntry.analysis.primary_emotion}
                   </span>
                   {latestEntry.analysis.secondary_emotion && (
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#E4ECE2] dark:bg-[#1E2822] text-[#24201D] dark:text-[#F5EFE6] border border-[#C8D7C5] dark:border-[#28362D]">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#FAF3E8] dark:bg-[#261E14] text-[#72531F] dark:text-[#F3D39B] border border-[#EBD2A4] dark:border-[#3D2C21]">
                       Secondary: {latestEntry.analysis.secondary_emotion}
                     </span>
                   )}
                   {latestEntry.analysis.languages_detected && (
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#D6E3D3] dark:bg-[#1D2D23] text-[#263825] dark:text-[#B4D4B0] border border-[#C8D7C5] dark:border-[#2D4434]">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#F4EAE6] dark:bg-[#251C1F] text-[#94676E] dark:text-[#BA8E94] border border-[#EDE3DF] dark:border-transparent">
                       {JSON.parse(latestEntry.analysis.languages_detected).join(" • ")}
                     </span>
                   )}

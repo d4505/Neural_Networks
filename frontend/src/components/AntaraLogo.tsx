@@ -40,7 +40,7 @@ export function AntaraLogoIcon({
         strokeWidth="3.2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-[#5F7E5C] dark:text-[#86A882]"
+        className="text-[#94676E] dark:text-[#BA8E94]"
       />
 
       {/* Grounding Baseline */}
@@ -49,7 +49,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="3.2"
         strokeLinecap="round"
-        className="text-[#5F7E5C] dark:text-[#86A882]"
+        className="text-[#94676E] dark:text-[#BA8E94]"
       />
 
       {/* 2. Radiating Sunbeams from Inner Horizon */}
@@ -61,7 +61,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        className="text-[#8FA88B] dark:text-[#5E7F5B] opacity-75"
+        className="text-[#B58A46] dark:text-[#C89F58] opacity-75"
       />
       <line
         x1="50"
@@ -71,7 +71,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        className="text-[#8FA88B] dark:text-[#5E7F5B] opacity-75"
+        className="text-[#B58A46] dark:text-[#C89F58] opacity-75"
       />
       <line
         x1="50"
@@ -81,7 +81,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="2.2"
         strokeLinecap="round"
-        className="text-[#8FA88B] dark:text-[#5E7F5B] opacity-85"
+        className="text-[#B58A46] dark:text-[#C89F58] opacity-85"
       />
       <line
         x1="50"
@@ -91,7 +91,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        className="text-[#8FA88B] dark:text-[#5E7F5B] opacity-75"
+        className="text-[#B58A46] dark:text-[#C89F58] opacity-75"
       />
       <line
         x1="50"
@@ -101,7 +101,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        className="text-[#8FA88B] dark:text-[#5E7F5B] opacity-75"
+        className="text-[#B58A46] dark:text-[#C89F58] opacity-75"
       />
 
       {/* 3. Celestial Star & Planetary Orbs */}
@@ -118,7 +118,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="2.8"
         strokeLinecap="round"
-        className="text-[#5F7E5C] dark:text-[#86A882]"
+        className="text-[#94676E] dark:text-[#BA8E94]"
       />
 
       {/* 5. Seated Meditative Core / Lotus Heart Silhouette */}
@@ -127,7 +127,7 @@ export function AntaraLogoIcon({
         cy="51"
         r="4.2"
         fill="currentColor"
-        className="text-[#5F7E5C] dark:text-[#86A882]"
+        className="text-[#94676E] dark:text-[#BA8E94]"
       />
 
       <path
@@ -135,7 +135,7 @@ export function AntaraLogoIcon({
         stroke="currentColor"
         strokeWidth="2.4"
         strokeLinecap="round"
-        className="text-[#5F7E5C] dark:text-[#86A882]"
+        className="text-[#94676E] dark:text-[#BA8E94]"
       />
 
       {/* Diamond Essence (Inner Self / Antara Core) */}
@@ -152,7 +152,7 @@ export function AntaraLogoIcon({
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
-        className="text-[#5F7E5C] dark:text-[#86A882]"
+        className="text-[#94676E] dark:text-[#BA8E94]"
       />
     </svg>
   );
@@ -167,7 +167,7 @@ export function AntaraLogo({
   if (variant === "badge") {
     return (
       <div
-        className={`inline-flex items-center justify-center rounded-2xl bg-gradient-to-tr from-[#E4ECE2] to-[#D6E3D3] dark:from-[#1D2D23] dark:to-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] p-2 shadow-xs transition-transform ${className}`}
+        className={`inline-flex items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FAF3E8] to-[#F7F1EE] dark:from-[#261E14] dark:to-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] p-2 shadow-xs transition-transform ${className}`}
       >
         <AntaraLogoIcon size={size} />
       </div>
@@ -177,14 +177,14 @@ export function AntaraLogo({
   if (variant === "full" || showText) {
     return (
       <div className={`inline-flex items-center space-x-3 select-none ${className}`}>
-        <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#E4ECE2] to-[#D6E3D3] dark:from-[#1D2D23] dark:to-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] flex items-center justify-center p-1.5 shadow-xs shrink-0">
+        <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#FAF3E8] to-[#F7F1EE] dark:from-[#261E14] dark:to-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] flex items-center justify-center p-1.5 shadow-xs shrink-0">
           <AntaraLogoIcon size={28} />
         </div>
         <div>
-          <span className="text-2xl font-serif font-bold tracking-tight text-[#24201D] dark:text-[#F5EFE6] block leading-none">
+          <span className="text-2xl font-serif font-bold tracking-tight text-[#241F1D] dark:text-[#EFEAEB] block leading-none">
             Swadhyaya
           </span>
-          <span className="text-[10px] text-[#596557] dark:text-[#86A882] uppercase tracking-widest font-semibold block mt-1">
+          <span className="text-[10px] text-[#94676E] dark:text-[#BA8E94] uppercase tracking-widest font-semibold block mt-1">
             Multilingual Journal
           </span>
         </div>
