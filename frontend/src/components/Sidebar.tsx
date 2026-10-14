@@ -15,6 +15,7 @@ import {
   Award,
   Wind,
   Flame,
+  ClipboardCheck,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
@@ -30,6 +31,7 @@ const fetcher = (url: string) => api.get(url).then((res) => res.data);
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "My Journal", href: "/journal", icon: BookOpen },
+  { name: "Therapy Copilot", href: "/clinical", icon: ClipboardCheck },
   { name: "Insights", href: "/insights", icon: BarChart2 },
   { name: "Streaks & Rewards", href: "/rewards", icon: Award },
   { name: "Calendar", href: "/calendar", icon: Calendar },

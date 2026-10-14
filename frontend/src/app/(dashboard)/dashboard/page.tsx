@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import useSWR from "swr";
-import { PlusCircle, Loader2, HeartHandshake, TrendingDown, Sparkles, BookOpen, Calendar as CalendarIcon, ArrowRight, ShieldAlert, Wind } from "lucide-react";
+import { PlusCircle, Loader2, HeartHandshake, TrendingDown, Sparkles, BookOpen, Calendar as CalendarIcon, ArrowRight, ShieldAlert, Wind, ClipboardCheck } from "lucide-react";
 import api from "../../../lib/api";
 import { StreakRewardCard } from "../../../components/StreakRewardCard";
 import { BreathingModal } from "../../../components/BreathingModal";
@@ -71,6 +71,30 @@ export default function DashboardPage() {
 
       {/* Mindful Streak & Consistency Widget */}
       <StreakRewardCard />
+
+      {/* Therapy Copilot Quick Banner */}
+      <div className="p-4 sm:p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex items-center space-x-3.5">
+          <div className="w-10 h-10 rounded-2xl bg-[#FAF3E8] dark:bg-[#261E14] border border-[#EBD2A4] dark:border-[#3D2C21] flex items-center justify-center text-[#B58A46] dark:text-[#C89F58] shrink-0">
+            <ClipboardCheck className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-sm font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB]">
+              Therapy Copilot & Longitudinal Dossier
+            </h3>
+            <p className="text-xs text-[#726561] dark:text-[#9B8E91] mt-0.5">
+              Standardized PHQ-9/GAD-7 check-ins and session prep summary ready for clinical review.
+            </p>
+          </div>
+        </div>
+        <Link
+          href="/clinical"
+          className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-[#94676E] hover:bg-[#83535B] dark:bg-[#BA8E94] dark:hover:bg-[#C89F58] text-white dark:text-[#181113] text-xs font-bold transition-all shadow-2xs shrink-0"
+        >
+          <span>Open Clinical Dossier</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
 
       {/* Gentle Wellbeing Nudge Banner (Section 17 requirement) */}
       {showNudge && (

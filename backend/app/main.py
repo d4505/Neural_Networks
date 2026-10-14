@@ -8,7 +8,7 @@ if project_root not in sys.path:
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
-from app.api import auth, entries, insights, calendar, system
+from app.api import auth, entries, insights, calendar, system, clinical
 
 # Ensure tables are created
 Base.metadata.create_all(bind=engine)
@@ -38,6 +38,7 @@ app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(entries.router, prefix="/api/journal", tags=["Journaling"])
 app.include_router(insights.router, prefix="/api/insights", tags=["Insights & Trajectory"])
 app.include_router(calendar.router, prefix="/api/calendar", tags=["Calendar"])
+app.include_router(clinical.router, prefix="/api/clinical", tags=["Clinical Affective Copilot"])
 app.include_router(system.router, prefix="/api", tags=["System & Model Status"])
 
 # Standalone /api/analyze-entry route alias
@@ -50,6 +51,7 @@ app.include_router(auth.router, prefix="/auth", tags=["Auth Legacy"])
 app.include_router(entries.router, prefix="/entries", tags=["Entries Legacy"])
 app.include_router(insights.router, prefix="/insights", tags=["Insights Legacy"])
 app.include_router(calendar.router, prefix="/calendar", tags=["Calendar Legacy"])
+app.include_router(clinical.router, prefix="/clinical", tags=["Clinical Legacy"])
 
 @app.get("/")
 def read_root():
