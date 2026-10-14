@@ -67,7 +67,7 @@ export default function LoginPage() {
   return (
     <div className="w-full max-w-md bg-[#FCFAF7] dark:bg-[#19221C] p-8 rounded-3xl shadow-xl border border-[#E5DDD0] dark:border-[#28362D] transition-colors">
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#D6E3D3] to-[#E4ECE2] dark:from-[#1D2D23] dark:to-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] p-2.5 shadow-xs mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#FAF3E8] to-[#F7F1EE] dark:from-[#261E14] dark:to-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] p-2.5 shadow-xs mb-4">
           <AntaraLogoIcon size={44} />
         </div>
         <h1 className="text-3xl font-serif font-semibold text-[#24201D] dark:text-[#F5EFE6] tracking-tight">
