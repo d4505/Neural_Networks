@@ -34,7 +34,7 @@ const fetcher = (url: string) => api.get(url).then((res) => res.data);
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "My Journal", href: "/journal", icon: BookOpen },
-  { name: "Therapy Copilot", href: "/clinical", icon: ClipboardCheck, badge: "NEW" },
+  { name: "Therapy Copilot", href: "/clinical", icon: ClipboardCheck },
   { name: "Insights", href: "/insights", icon: BarChart2 },
   { name: "Calendar", href: "/calendar", icon: Calendar },
   { name: "Rewards", href: "/rewards", icon: Award },

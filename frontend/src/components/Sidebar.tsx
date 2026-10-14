@@ -53,7 +53,7 @@ const navGroups: NavGroup[] = [
   {
     section: "Clinical Affect Copilot",
     items: [
-      { name: "Therapy Copilot", href: "/clinical", icon: ClipboardCheck, badge: "NEW", isClinical: true },
+      { name: "Therapy Copilot", href: "/clinical", icon: ClipboardCheck, isClinical: true },
       { name: "Affect Insights", href: "/insights", icon: BarChart2 },
       { name: "Calendar Archive", href: "/calendar", icon: Calendar },
     ],
