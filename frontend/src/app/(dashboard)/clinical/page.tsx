@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
 import api from "../../../lib/api";
 import {
@@ -23,6 +23,9 @@ import {
   FileText,
   UserCheck,
   HeartPulse,
+  Download,
+  Save,
+  BookMarked,
 } from "lucide-react";
 
 const fetcher = (url: string) => api.get(url).then((res) => res.data);
@@ -53,8 +56,40 @@ export default function ClinicalCopilotPage() {
     fetcher
   );
 
+  const [sessionNotes, setSessionNotes] = useState<string>("");
+  const [sessionNotesSaved, setSessionNotesSaved] = useState<boolean>(false);
+
+  // Initialize session notes from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("swadhyaya_session_notes");
+      if (saved) setSessionNotes(saved);
+    }
+  }, []);
+
+  const saveSessionNotes = () => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("swadhyaya_session_notes", sessionNotes);
+      setSessionNotesSaved(true);
+      setTimeout(() => setSessionNotesSaved(false), 2500);
+    }
+  };
+
   const handlePrint = () => {
     window.print();
+  };
+
+  const handleDownloadJSON = () => {
+    if (!dossier) return;
+    const blob = new Blob([JSON.stringify(dossier, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `swadhyaya_clinical_dossier_${anonymize ? "anonymized" : "patient"}_${days}d.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   const openNewAssessment = (type: "PHQ-9" | "GAD-7") => {
@@ -188,6 +223,16 @@ export default function ClinicalCopilotPage() {
           >
             <ShieldCheck className="w-4 h-4" />
             <span>{anonymize ? "Privacy Mask: ON" : "Privacy Mask"}</span>
+          </button>
+
+          {/* Download JSON */}
+          <button
+            onClick={handleDownloadJSON}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-[#FCFAF9] hover:bg-[#F7F1EE] dark:bg-[#1C1719] dark:hover:bg-[#261E14] border border-[#EDE3DF] dark:border-[#2D2427] text-xs font-semibold text-[#726561] dark:text-[#9B8E91] shadow-2xs transition-all cursor-pointer"
+            title="Download full standardized clinical JSON dossier"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>JSON</span>
           </button>
 
           {/* Print / Export PDF */}
@@ -686,6 +731,50 @@ export default function ClinicalCopilotPage() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Section 5: In-Session Clinician Notes & Action Plan */}
+      <div className="p-6 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#EDE3DF] dark:border-[#2D2427] pb-3">
+          <div>
+            <h2 className="text-base font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB] flex items-center gap-2">
+              <BookMarked className="w-4 h-4 text-[#94676E] dark:text-[#BA8E94]" />
+              Therapist Notes & Collaborative Action Plan
+            </h2>
+            <p className="text-xs text-[#726561] dark:text-[#9B8E91] mt-0.5">
+              Record insights, homework exercises, and therapeutic commitments established during your appointment.
+            </p>
+          </div>
+          <button
+            onClick={saveSessionNotes}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#FAF3E8] hover:bg-[#F5EAD7] dark:bg-[#261E14] dark:hover:bg-[#33271A] border border-[#EBD2A4] dark:border-[#3D2C21] text-xs font-bold text-[#72531F] dark:text-[#F3D39B] transition-all cursor-pointer self-start sm:self-auto print:hidden"
+          >
+            <Save className="w-3.5 h-3.5" />
+            <span>{sessionNotesSaved ? "Saved to Record!" : "Save Notes"}</span>
+          </button>
+        </div>
+
+        <div>
+          <textarea
+            value={sessionNotes}
+            onChange={(e) => setSessionNotes(e.target.value)}
+            placeholder="Type clinical session takeaways, homework assignments (e.g. 60-second breathing, sleep schedule, cognitive thought reframing), or therapist observations..."
+            rows={4}
+            className="w-full p-4 bg-[#F7F1EE]/60 dark:bg-[#161314] border border-[#EDE3DF] dark:border-[#2D2427] rounded-2xl text-xs text-[#241F1D] dark:text-[#EFEAEB] placeholder-[#9B8E91] focus:outline-none focus:ring-2 focus:ring-[#94676E] leading-relaxed"
+          />
+        </div>
+
+        {/* Print-Only Signature Line */}
+        <div className="hidden print:flex justify-between items-end pt-12 text-xs text-stone-700">
+          <div>
+            <div className="w-48 border-b border-stone-800 mb-1"></div>
+            <span>Patient Signature</span>
+          </div>
+          <div>
+            <div className="w-48 border-b border-stone-800 mb-1"></div>
+            <span>Licensed Clinician / Therapist Signature</span>
+          </div>
+        </div>
       </div>
 
       {/* Assessment Modal (PHQ-9 or GAD-7) */}
