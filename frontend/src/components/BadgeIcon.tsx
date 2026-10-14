@@ -36,35 +36,35 @@ export function BadgeIcon({
 
   // Color styling based on unlock state & category
   const iconColor = isUnlocked
-    ? "text-[#5F7E5C] dark:text-[#86A882]"
-    : "text-[#596557]/50 dark:text-[#A6A099]/50";
+    ? "text-[#94676E] dark:text-[#BA8E94]"
+    : "text-[#726561]/50 dark:text-[#9B8E91]/50";
 
   if (id.includes("first") || id.includes("seed") || name.includes("sprout") || name === "🌱") {
-    return <Sprout className={clsx(className, isUnlocked ? "text-[#5F7E5C] dark:text-[#86A882]" : iconColor)} />;
+    return <Sprout className={clsx(className, isUnlocked ? "text-[#B58A46] dark:text-[#C89F58]" : iconColor)} />;
   }
 
   if (id.includes("streak_3") || id.includes("flow") || name.includes("flame") || name === "🔥") {
-    return <Flame className={clsx(className, isUnlocked ? "text-amber-700 dark:text-amber-400 fill-amber-700/20" : iconColor)} />;
+    return <Flame className={clsx(className, isUnlocked ? "text-[#B58A46] dark:text-[#C89F58] fill-[#B58A46]/20" : iconColor)} />;
   }
 
   if (id.includes("streak_7") || id.includes("clarity") || name.includes("sparkles") || name === "✨") {
-    return <Sparkles className={clsx(className, isUnlocked ? "text-[#5F7E5C] dark:text-[#86A882]" : iconColor)} />;
+    return <Sparkles className={clsx(className, isUnlocked ? "text-[#94676E] dark:text-[#BA8E94]" : iconColor)} />;
   }
 
   if (id.includes("streak_14") || id.includes("fortitude") || name.includes("mountain") || name.includes("compass") || name === "🌿") {
-    return <Compass className={clsx(className, isUnlocked ? "text-[#4D674A] dark:text-[#A4C4A0]" : iconColor)} />;
+    return <Compass className={clsx(className, isUnlocked ? "text-[#B58A46] dark:text-[#C89F58]" : iconColor)} />;
   }
 
   if (id.includes("streak_30") || id.includes("zen") || id.includes("master") || name.includes("crown") || name.includes("lotus") || name === "👑") {
-    return <Crown className={clsx(className, isUnlocked ? "text-amber-700 dark:text-amber-400" : iconColor)} />;
+    return <Crown className={clsx(className, isUnlocked ? "text-[#C89F58] dark:text-[#DEAF60]" : iconColor)} />;
   }
 
   if (id.includes("polyglot") || id.includes("language") || name.includes("languages") || name === "🌐") {
-    return <Languages className={clsx(className, isUnlocked ? "text-[#5F7E5C] dark:text-[#86A882]" : iconColor)} />;
+    return <Languages className={clsx(className, isUnlocked ? "text-[#94676E] dark:text-[#BA8E94]" : iconColor)} />;
   }
 
   if (id.includes("deep") || id.includes("explorer") || name.includes("feather") || name === "📖") {
-    return <Feather className={clsx(className, isUnlocked ? "text-[#4D674A] dark:text-[#A4C4A0]" : iconColor)} />;
+    return <Feather className={clsx(className, isUnlocked ? "text-[#94676E] dark:text-[#BA8E94]" : iconColor)} />;
   }
 
   if (id.includes("night") || id.includes("calm") || name.includes("moon") || name === "🌙") {

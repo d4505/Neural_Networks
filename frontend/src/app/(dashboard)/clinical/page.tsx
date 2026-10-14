@@ -283,61 +283,74 @@ export default function ClinicalCopilotPage() {
 
       {/* Section 1: Executive Clinical Metrics Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Mean Valence Score */}
-        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2">
+        {/* Overall Mood Balance */}
+        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2.5">
           <div className="flex items-center justify-between text-xs font-semibold text-[#726561] dark:text-[#9B8E91]">
-            <span>Mean Affective Valence</span>
+            <span>Overall Mood Balance</span>
             <Activity className="w-4 h-4 text-[#94676E] dark:text-[#BA8E94]" />
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB]">
-              {dossier?.mean_valence !== undefined ? (dossier.mean_valence > 0 ? `+${dossier.mean_valence}` : dossier.mean_valence) : "0.0"}
+          <div>
+            <span className="text-2xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB] block">
+              {(dossier?.mean_valence || 0) > 0.15
+                ? "Gentle Positivity"
+                : (dossier?.mean_valence || 0) < -0.15
+                ? "Carrying Heaviness"
+                : "Calm Equilibrium"}
             </span>
-            <span className="text-xs text-[#726561] dark:text-[#9B8E91]">on (-1.0 to +1.0)</span>
+            <span className="text-[11px] text-[#726561] dark:text-[#9B8E91] font-medium block mt-0.5">
+              Score: {dossier?.mean_valence !== undefined ? (dossier.mean_valence > 0 ? `+${dossier.mean_valence}` : dossier.mean_valence) : "0.0"}
+            </span>
           </div>
-          {/* Valence Mini Bar */}
-          <div className="w-full bg-[#EDE3DF] dark:bg-[#2D2427] h-2 rounded-full overflow-hidden flex">
-            <div
-              className={`h-full transition-all rounded-full ${
-                (dossier?.mean_valence || 0) >= 0 ? "bg-[#B58A46] dark:bg-[#C89F58]" : "bg-[#94676E] dark:bg-[#BA8E94]"
-              }`}
-              style={{
-                width: `${Math.min(100, Math.max(10, Math.abs(dossier?.mean_valence || 0) * 100))}%`,
-              }}
-            />
+          {/* Mood Bar */}
+          <div className="space-y-1 pt-1">
+            <div className="w-full bg-[#EDE3DF] dark:bg-[#2D2427] h-2 rounded-full overflow-hidden flex">
+              <div
+                className={`h-full transition-all rounded-full ${
+                  (dossier?.mean_valence || 0) >= 0 ? "bg-[#B58A46] dark:bg-[#C89F58]" : "bg-[#94676E] dark:bg-[#BA8E94]"
+                }`}
+                style={{
+                  width: `${Math.min(100, Math.max(15, ((dossier?.mean_valence || 0) + 1) * 50))}%`,
+                }}
+              />
+            </div>
+            <div className="flex justify-between text-[9px] text-[#726561]/80 dark:text-[#9B8E91]/80 font-medium px-0.5">
+              <span>Heavy</span>
+              <span>Balanced</span>
+              <span>Uplifted</span>
+            </div>
           </div>
-          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91]">
-            {(dossier?.mean_valence || 0) > 0.1
-              ? "Positive affective reserve"
-              : (dossier?.mean_valence || 0) < -0.2
-              ? "Predominantly negative emotional drift"
-              : "Neutral / mixed affective equilibrium"}
+          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91] pt-0.5 leading-relaxed">
+            Overall emotional sentiment from your reflections.
           </p>
         </div>
 
-        {/* Affective Volatility */}
-        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2">
+        {/* Emotional Steadiness */}
+        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2.5">
           <div className="flex items-center justify-between text-xs font-semibold text-[#726561] dark:text-[#9B8E91]">
-            <span>Affective Volatility</span>
+            <span>Emotional Steadiness</span>
             <HeartPulse className="w-4 h-4 text-[#B58A46] dark:text-[#C89F58]" />
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB]">
-              σ = {dossier?.volatility_score || 0.0}
+          <div>
+            <span className="text-2xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB] block">
+              {(dossier?.volatility_score || 0) < 0.25
+                ? "Very Steady"
+                : (dossier?.volatility_score || 0) < 0.45
+                ? "Mild Daily Shifts"
+                : "Frequent Highs & Lows"}
+            </span>
+            <span className="inline-block text-[10.5px] font-semibold px-2 py-0.5 rounded-lg bg-[#FAF3E8] dark:bg-[#261E14] text-[#72531F] dark:text-[#F3D39B] border border-[#EBD2A4] dark:border-[#3D2C21] mt-1.5">
+              {(dossier?.volatility_score || 0) < 0.25 ? "Calm Consistency" : (dossier?.volatility_score || 0) < 0.45 ? "Natural Variation" : "Active Fluctuations"}
             </span>
           </div>
-          <span className="inline-block text-[11px] font-semibold px-2 py-0.5 rounded-lg bg-[#FAF3E8] dark:bg-[#261E14] text-[#72531F] dark:text-[#F3D39B] border border-[#EBD2A4] dark:border-[#3D2C21]">
-            {dossier?.affective_volatility || "Normal Stability"}
-          </span>
-          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91]">
-            Measures standard deviation and day-to-day emotional swing intensity.
+          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91] leading-relaxed pt-2">
+            Measures how smoothly your emotions transition day by day.
           </p>
         </div>
 
-        {/* Clinical Trajectory Slope */}
-        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2">
+        {/* Recent Trend */}
+        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2.5">
           <div className="flex items-center justify-between text-xs font-semibold text-[#726561] dark:text-[#9B8E91]">
-            <span>Trajectory Slope</span>
+            <span>Recent Trend</span>
             {(dossier?.slope_angle || 0) > 0.03 ? (
               <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             ) : (dossier?.slope_angle || 0) < -0.03 ? (
@@ -346,25 +359,32 @@ export default function ClinicalCopilotPage() {
               <Minus className="w-4 h-4 text-stone-400" />
             )}
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB]">
-              {(dossier?.slope_angle || 0) > 0 ? `+${dossier?.slope_angle}` : dossier?.slope_angle || "0.0"}
+          <div>
+            <span className="text-2xl font-serif font-bold text-[#241F1D] dark:text-[#EFEAEB] block">
+              {(dossier?.slope_angle || 0) > 0.03
+                ? "Gradually Lifting"
+                : (dossier?.slope_angle || 0) < -0.03
+                ? "Feeling Heavier"
+                : "Steady Horizon"}
+            </span>
+            <span className="text-[11px] text-[#726561] dark:text-[#9B8E91] font-medium block mt-0.5">
+              {(dossier?.slope_angle || 0) > 0.03
+                ? "Consistent positive momentum"
+                : (dossier?.slope_angle || 0) < -0.03
+                ? "Mild strain over recent days"
+                : "Even emotional pattern"}
             </span>
           </div>
-          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91]">
-            {(dossier?.slope_angle || 0) > 0.03
-              ? "Upward emotional improvement"
-              : (dossier?.slope_angle || 0) < -0.03
-              ? "Downward slope over consecutive days"
-              : "Stable horizontal trajectory"}
+          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91] leading-relaxed pt-2">
+            The general direction your feelings are moving over this period.
           </p>
         </div>
 
-        {/* Clinical Risk Tier */}
-        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2">
+        {/* Wellbeing Support */}
+        <div className="p-5 rounded-3xl bg-[#FCFAF9] dark:bg-[#1C1719] border border-[#EDE3DF] dark:border-[#2D2427] shadow-xs space-y-2.5">
           <div className="flex items-center justify-between text-xs font-semibold text-[#726561] dark:text-[#9B8E91]">
-            <span>Clinical Risk Flag</span>
-            <AlertTriangle className="w-4 h-4 text-[#94676E] dark:text-[#BA8E94]" />
+            <span>Care & Support Guide</span>
+            <ShieldCheck className="w-4 h-4 text-[#94676E] dark:text-[#BA8E94]" />
           </div>
           <div>
             <span
@@ -378,11 +398,23 @@ export default function ClinicalCopilotPage() {
                   : "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200"
               }`}
             >
-              {dossier?.clinical_risk_tier || "Minimal"} Risk
+              {dossier?.clinical_risk_tier === "High"
+                ? "Support Recommended"
+                : dossier?.clinical_risk_tier === "Elevated"
+                ? "Extra Care Helpful"
+                : dossier?.clinical_risk_tier === "Guarded"
+                ? "Gentle Check-in"
+                : "Emotionally Balanced"}
             </span>
           </div>
-          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91]">
-            {dossier?.clinical_risk_description || "Regulated emotional baseline."}
+          <p className="text-[11px] text-[#726561] dark:text-[#9B8E91] leading-relaxed pt-1">
+            {dossier?.clinical_risk_tier === "High"
+              ? "Consider discussing recent heavy moments with a counselor or trusted friend."
+              : dossier?.clinical_risk_tier === "Elevated"
+              ? "A supportive prompt to explore recent stressors in your next session."
+              : dossier?.clinical_risk_tier === "Guarded"
+              ? "Mild fluctuations observed; taking restful pauses can help."
+              : "Your emotional baseline is stable and regulated."}
           </p>
         </div>
       </div>
