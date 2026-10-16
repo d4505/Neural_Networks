@@ -14,8 +14,8 @@ export function StreakRewardCard() {
 
   if (isLoading || !streakData) {
     return (
-      <div className="bg-[#FFFFFF] dark:bg-[#1C1719] p-6 rounded-3xl border border-[#EDE3DF] dark:border-[#2D2427] animate-pulse h-60 flex items-center justify-center">
-        <div className="text-xs text-[#726561] dark:text-[#9B8E91]">Loading mindful habits...</div>
+      <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] p-6 rounded-3xl border border-[#C8D7C5] dark:border-[#28362D] animate-pulse h-60 flex items-center justify-center">
+        <div className="text-xs text-[#596557] dark:text-[#A6A099]">Loading mindful habits...</div>
       </div>
     );
   }
@@ -38,34 +38,34 @@ export function StreakRewardCard() {
   const xpPercent = Math.min(100, Math.round((xp / next_level_xp) * 100));
 
   return (
-    <div className="bg-[#FFFFFF] dark:bg-[#1C1719] p-6 rounded-3xl shadow-xs border border-[#EDE3DF] dark:border-[#2D2427] space-y-5 transition-colors backdrop-blur-xs">
+    <div className="bg-[#E4ECE2]/80 dark:bg-[#19221C] p-6 rounded-3xl shadow-xs border border-[#C8D7C5] dark:border-[#28362D] space-y-5 transition-colors backdrop-blur-xs">
       {/* Top Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3.5">
           <div className={clsx(
             "w-12 h-12 rounded-2xl flex items-center justify-center shadow-xs border transition-transform shrink-0",
             current_streak > 0 
-              ? "bg-[#FAF3E8] dark:bg-[#261E14] border-[#EBD2A4] dark:border-[#3D2C21]"
-              : "bg-[#FAF3E8] dark:bg-[#261E14] border-[#EDE3DF] dark:border-[#3D2C21]"
+              ? "bg-[#D6E3D3] dark:bg-[#1D2D23] border-[#B4D4B0] dark:border-[#2D4434]"
+              : "bg-[#D6E3D3] dark:bg-[#1D2D23] border-[#C8D7C5] dark:border-[#2D4434]"
           )}>
             {current_streak > 0 ? (
-              <Flame className="w-6 h-6 text-[#B58A46] dark:text-[#C89F58] fill-[#B58A46]/20 stroke-[2.2]" />
+              <Flame className="w-6 h-6 text-amber-700 dark:text-amber-400 fill-amber-700/20 stroke-[2.2]" />
             ) : (
-              <Sprout className="w-6 h-6 text-[#94676E] dark:text-[#BA8E94] stroke-[2.2]" />
+              <Sprout className="w-6 h-6 text-[#5F7E5C] dark:text-[#86A882] stroke-[2.2]" />
             )}
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h3 className="font-serif font-bold text-xl text-[#241F1D] dark:text-[#EFEAEB]">
+              <h3 className="font-serif font-bold text-xl text-[#24201D] dark:text-[#F5EFE6]">
                 {current_streak} {current_streak === 1 ? "Day" : "Days"} Streak
               </h3>
               {streak_active_today && (
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#FAF3E8] text-[#72531F] dark:bg-[#261E14] dark:text-[#F3D39B] border border-[#EBD2A4] dark:border-[#3D2C21]">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#D6E3D3] text-[#263825] dark:bg-[#1D2D23] dark:text-[#B4D4B0] border border-[#B4D4B0] dark:border-[#2D4434]">
                   Active Today
                 </span>
               )}
             </div>
-            <p className="text-xs text-[#726561] dark:text-[#9B8E91] mt-0.5">
+            <p className="text-xs text-[#596557] dark:text-[#A6A099] mt-0.5">
               {streak_active_today
                 ? "Reflection completed today. Tomorrow keeps the momentum alive."
                 : grace_period_active
@@ -79,7 +79,7 @@ export function StreakRewardCard() {
 
         <Link
           href="/rewards"
-          className="inline-flex items-center space-x-1 text-xs font-semibold text-[#94676E] dark:text-[#BA8E94] hover:underline shrink-0"
+          className="inline-flex items-center space-x-1 text-xs font-semibold text-[#5F7E5C] dark:text-[#86A882] hover:underline shrink-0"
         >
           <span>Rewards & Badges</span>
           <ChevronRight className="w-3.5 h-3.5" />
@@ -87,19 +87,19 @@ export function StreakRewardCard() {
       </div>
 
       {/* Level & XP Bar */}
-      <div className="p-3.5 rounded-2xl bg-[#F7F1EE] dark:bg-[#151112] border border-[#EDE3DF] dark:border-[#2D2427] space-y-2">
+      <div className="p-3.5 rounded-2xl bg-[#D6E3D3]/60 dark:bg-[#141C17] border border-[#C8D7C5] dark:border-[#28362D] space-y-2">
         <div className="flex items-center justify-between text-xs">
-          <div className="flex items-center space-x-1.5 font-bold text-[#241F1D] dark:text-[#EFEAEB]">
-            <Zap className="w-3.5 h-3.5 text-[#B58A46] dark:text-[#C89F58] fill-current" />
+          <div className="flex items-center space-x-1.5 font-bold text-[#24201D] dark:text-[#F5EFE6]">
+            <Zap className="w-3.5 h-3.5 text-[#5F7E5C] dark:text-[#86A882] fill-current" />
             <span>Mindful Level {level}</span>
           </div>
-          <span className="text-[#726561] dark:text-[#9B8E91] font-medium text-[11px]">
+          <span className="text-[#596557] dark:text-[#A6A099] font-medium text-[11px]">
             {xp} / {next_level_xp} XP
           </span>
         </div>
-        <div className="w-full h-2 bg-[#EDE3DF] dark:bg-[#251C1F] rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-[#C8D7C5]/50 dark:bg-[#1D2D23] rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#94676E] to-[#B58A46] dark:from-[#BA8E94] dark:to-[#C89F58] rounded-full transition-all duration-700"
+            className="h-full bg-gradient-to-r from-[#5F7E5C] to-[#4D674A] dark:from-[#86A882] dark:to-[#A4C4A0] rounded-full transition-all duration-700"
             style={{ width: `${xpPercent}%` }}
           />
         </div>
@@ -107,7 +107,7 @@ export function StreakRewardCard() {
 
       {/* 7-Day Habit Tracker */}
       <div className="space-y-2">
-        <div className="flex justify-between items-center text-xs text-[#726561] dark:text-[#9B8E91]">
+        <div className="flex justify-between items-center text-xs text-[#596557] dark:text-[#A6A099]">
           <span className="font-semibold uppercase tracking-wider text-[10px]">Past 7 Days Rhythm</span>
           <span>Best: {longest_streak} days</span>
         </div>
@@ -118,20 +118,20 @@ export function StreakRewardCard() {
               className={clsx(
                 "flex flex-col items-center py-2 px-1 rounded-2xl border text-center transition-all",
                 day.has_entry
-                  ? "bg-[#FAF3E8] dark:bg-[#261E14] border-[#EBD2A4] dark:border-[#3D2C21] text-[#241F1D] dark:text-[#EFEAEB]"
+                  ? "bg-[#D6E3D3] dark:bg-[#1D2D23] border-[#B4D4B0] dark:border-[#2D4434] text-[#24201D] dark:text-[#F5EFE6]"
                   : day.is_today
-                  ? "bg-[#F7F1EE] dark:bg-[#151112] border-dashed border-[#94676E] dark:border-[#BA8E94] text-[#726561] dark:text-[#9B8E91]"
-                  : "bg-[#FCFAF9]/50 dark:bg-[#151112]/40 border-[#EDE3DF]/60 dark:border-[#2D2427]/50 text-[#726561]/60 dark:text-[#9B8E91]/60"
+                  ? "bg-[#EAEFE8]/50 dark:bg-[#141C17] border-dashed border-[#5F7E5C] dark:border-[#86A882] text-[#596557] dark:text-[#A6A099]"
+                  : "bg-[#EAEFE8]/30 dark:bg-[#141C17]/40 border-[#C8D7C5]/40 dark:border-[#28362D]/40 text-[#596557]/60 dark:text-[#A6A099]/60"
               )}
             >
               <span className="text-[10px] font-bold">{day.day_name}</span>
               <div className="mt-1.5 w-6 h-6 rounded-full flex items-center justify-center text-xs">
                 {day.has_entry ? (
-                  <Check className="w-3.5 h-3.5 text-[#B58A46] dark:text-[#C89F58] stroke-[3]" />
+                  <Check className="w-3.5 h-3.5 text-[#5F7E5C] dark:text-[#86A882] stroke-[3]" />
                 ) : day.is_today ? (
-                  <Clock className="w-3 h-3 text-[#94676E] dark:text-[#BA8E94] animate-pulse" />
+                  <Clock className="w-3 h-3 text-[#5F7E5C] dark:text-[#86A882] animate-pulse" />
                 ) : (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EDE3DF] dark:bg-[#2D2427]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C8D7C5] dark:bg-[#28362D]" />
                 )}
               </div>
             </div>
@@ -141,21 +141,21 @@ export function StreakRewardCard() {
 
       {/* Next Milestone & Badges Preview */}
       {nextBadge && (
-        <div className="pt-2 flex items-center justify-between border-t border-[#EDE3DF] dark:border-[#2D2427] text-xs">
+        <div className="pt-2 flex items-center justify-between border-t border-[#C8D7C5]/60 dark:border-[#28362D] text-xs">
           <div className="flex items-center space-x-2.5 truncate">
-            <div className="p-1.5 rounded-xl bg-[#FAF3E8] dark:bg-[#261E14] border border-[#EDE3DF] dark:border-[#3D2C21] shrink-0">
+            <div className="p-1.5 rounded-xl bg-[#D6E3D3] dark:bg-[#1D2D23] border border-[#C8D7C5] dark:border-[#2D4434] shrink-0">
               <BadgeIcon badgeId={nextBadge.id} iconName={nextBadge.icon} className="w-4 h-4" isUnlocked={false} />
             </div>
             <div className="truncate">
-              <span className="font-semibold text-[#241F1D] dark:text-[#EFEAEB] block truncate">
+              <span className="font-semibold text-[#24201D] dark:text-[#F5EFE6] block truncate">
                 Next: {nextBadge.title}
               </span>
-              <span className="text-[11px] text-[#726561] dark:text-[#9B8E91]">
+              <span className="text-[11px] text-[#596557] dark:text-[#A6A099]">
                 {nextBadge.description} ({nextBadge.progress}/{nextBadge.max_progress})
               </span>
             </div>
           </div>
-          <span className="font-bold text-[#94676E] dark:text-[#BA8E94] shrink-0 pl-2">
+          <span className="font-bold text-[#5F7E5C] dark:text-[#86A882] shrink-0 pl-2">
             {unlocked_count}/{badges.length} Badges
           </span>
         </div>

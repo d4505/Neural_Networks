@@ -16,8 +16,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Swadhyaya - Mental Health Journal",
-  description: "A private, thoughtful personal journal for multilingual reflection.",
+  title: "Antara - Mental Health Journal",
+  description: "A private, thoughtful personal journal.",
 };
 
 export default function RootLayout({

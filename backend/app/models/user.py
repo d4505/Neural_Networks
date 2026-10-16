@@ -15,4 +15,3 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     entries = relationship("DiaryEntry", back_populates="owner", cascade="all, delete-orphan")
-    psychometric_assessments = relationship("PsychometricAssessment", back_populates="user", cascade="all, delete-orphan")
